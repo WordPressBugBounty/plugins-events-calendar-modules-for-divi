@@ -1,0 +1,386 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Events Calendar Modules For Divi\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-02 10:38+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.11; wp-6.6.1\n"
+"X-Domain: events-calendar-modules-for-divi"
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:404
+msgid " Category Background Color"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:416
+msgid " Category Text Color"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:447
+msgid " Date Highlight Background Color"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:436
+msgid " Date Highlight Text Color"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:214
+msgid " Show Date Highlight"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:265
+msgid " Show Find Out More"
+msgstr ""
+
+#: includes/modules/ModulesCore/ModulesHelper.php:394
+#: includes/modules/ModulesCore/ModulesHelper.php:396
+#, php-format
+msgid "%1$s - %2$s"
+msgstr ""
+
+#: includes/modules/ModulesCore/ModulesHelper.php:400
+#: includes/modules/ModulesCore/ModulesHelper.php:402
+#, php-format
+msgid "%s"
+msgstr ""
+
+#. Description of the plugin
+msgid "A divi module to show your events in beautiful designs"
+msgstr ""
+
+#: includes/modules/ModulesCore/ModulesHelper.php:384
+#: includes/modules/ModulesCore/ModulesHelper.php:386
+msgid "All day"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:427
+msgid "Category Custom Padding"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:228
+msgid "Choose a Date format from the list of given formats for Highlight Date"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:185
+msgid ""
+"Choose a Date format from the list of given formats to display your date."
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:255
+msgid "Choose an Image"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:509
+#: includes/modules/EventsLayouts/EventsLayouts.php:532
+msgid "Container"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:362
+msgid "Container Background Color"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:370
+msgid "Container Background Hover Color"
+msgstr ""
+
+#. Author of the plugin
+msgid "Cool Plugins"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:252
+msgid "Default Image"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:194
+msgid ""
+"Enable this setting to show only featured events, by default the setting "
+"shows both fetaured and non-featured events"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:82
+msgid "Event Category"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:61
+msgid "Event Container"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:565
+msgid "Event Content Style"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:70
+msgid "Event Date"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:554
+msgid "Event Date Font"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:73
+msgid "Event Description"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:79
+msgid "Event Find Out More"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:586
+msgid "Event Find out more Style"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:67
+msgid "Event Highlight Date"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:52
+msgid "Event Query Settings"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:175
+msgid "Event Time"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:64
+msgid "Event Title"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:544
+msgid "Event Title Font"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:76
+msgid "Event Venue"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:575
+msgid "Event Venue Style"
+msgstr ""
+
+#. Name of the plugin
+msgid "Events Calendar Modules For Divi"
+msgstr ""
+
+#: events-calendar-modules-for-divi.php:174
+msgid ""
+"Events Calendar Modules For Divi requires Divi (Theme) to be installed and "
+"activated."
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:184
+msgid "Events Date Formats"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:46
+msgid "Events Layouts"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:205
+msgid "Events Order"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:395
+msgid "Find More Custom Padding"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:289
+#: includes/modules/EventsLayouts/EventsLayouts.php:596
+msgid "Find Out More"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:800
+msgid "Find out more"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:386
+msgid "Find Out More Background Color"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:282
+msgid "Find Out More Text"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:344
+msgid "Here you can choose whether to show Category or not."
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:328
+msgid "Here you can choose whether to show cost or not."
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:312
+msgid "Here you can choose whether to show description or not."
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:295
+msgid "Here you can choose whether to show venue or not."
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://coolplugins.net/"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://www.eventscalendaraddons.com/divi"
+msgstr ""
+
+#: events-calendar-modules-for-divi.php:140
+msgid ""
+"In order to use Events Divi Module addon, Please first install the latest "
+"version of The Events Calendar"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:198
+#: includes/modules/EventsLayouts/EventsLayouts.php:221
+#: includes/modules/EventsLayouts/EventsLayouts.php:246
+#: includes/modules/EventsLayouts/EventsLayouts.php:272
+#: includes/modules/EventsLayouts/EventsLayouts.php:301
+#: includes/modules/EventsLayouts/EventsLayouts.php:318
+#: includes/modules/EventsLayouts/EventsLayouts.php:334
+#: includes/modules/EventsLayouts/EventsLayouts.php:350
+msgid "No"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:163
+msgid "Number of Events"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:227
+msgid "Select Highlight Date Format"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:144
+msgid "Select Layout"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:154
+msgid "Select Style"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:256
+msgid "Set As Image"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:164
+msgid "Set The number of  events you want to display"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:327
+msgid "Show Cost"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:311
+msgid "Show Description"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:343
+msgid "Show Event Category"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:239
+msgid "Show Featured Image"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:193
+msgid "Show Only Featured Events"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:294
+msgid "Show Venue"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:378
+msgid "Text Color"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:283
+msgid ""
+"This setting helps you to change the Find Out More text to anything you want."
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:176
+msgid "This setting will help you showcase future, past or both time events."
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:206
+msgid ""
+"This setting will help you to show Events in Ascending and Descending Order"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:240
+msgid "To add Event Featured Image"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:253
+msgid "To add your default image to the events without image"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:405
+msgid "To change the background color category"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:448
+msgid "To change the background color Date Highlight"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:387
+msgid "To change the background color find out more"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:363
+msgid "To change the background color for the main container"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:371
+msgid "To change the background hover color for the main container"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:417
+msgid "To change the Text color category"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:437
+msgid "To change the Text color Date Highlight"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:379
+msgid "To change the text color for the venue"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:145
+msgid ""
+"To select different layouts from the given list, change this setting to any "
+"style you want."
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:266
+msgid "To Show Find Out More"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:215
+msgid "To Show Highlight date"
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:155
+msgid ""
+"To showcase different styles, change this setting to any style you want."
+msgstr ""
+
+#: includes/modules/EventsLayouts/EventsLayouts.php:197
+#: includes/modules/EventsLayouts/EventsLayouts.php:220
+#: includes/modules/EventsLayouts/EventsLayouts.php:245
+#: includes/modules/EventsLayouts/EventsLayouts.php:271
+#: includes/modules/EventsLayouts/EventsLayouts.php:300
+#: includes/modules/EventsLayouts/EventsLayouts.php:317
+#: includes/modules/EventsLayouts/EventsLayouts.php:333
+#: includes/modules/EventsLayouts/EventsLayouts.php:349
+msgid "Yes"
+msgstr ""

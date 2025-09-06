@@ -1,0 +1,235 @@
+{
+  "name": "ecmd/events-calendar-modules-for-divi",
+  "d4Shortcode": "ecmd_events_layouts",
+  "title": "Events Layout",
+  "titles": "Events Layouts",
+  "category": "module",
+  "attributes": {
+    "module": {
+      "type": "object",
+      "selector": "{{selector}}"
+    },
+    "style": [
+      "ecmd-divi5-visual-builder-style"
+    ],
+    "container_style": {
+      "type": "object",
+      "selector": "{{selector}} .ecmd-list-post"
+    },
+    "title_style": {
+      "type": "object",
+      "selector": "{{selector}} .ecmd-title-container .ecmd-event-title"
+      
+    },
+    "date_style": {
+      "type": "object",
+      "selector": "{{selector}} .ecmd-event-schedule"
+    },
+    "date_highlight": {
+      "type": "object",
+      "selector": "{{selector}} .ecmd-date-highlight .ecmd-date-area.list-schedule, {{selector}} .ecmd-list-post.style2 .ecmd-list-post-left .ecmd-date-highlight .ecmd-date-area"
+    },
+    "content_style": {
+      "type": "object",
+      "selector": "{{selector}} .ecmd-event-content"
+    },
+    "venue_style": {
+      "type": "object",
+      "selector": "{{selector}} .ecmd-list-post .ecmd-list-venue , {{selector}} .ecmd-list-post .ecmd-google a, {{selector}} .ecmd-list-post .ecmd-list-venue a"
+    },
+    "find_out_more": {
+      "type": "object",
+      "selector": "{{selector}} .ecmd-list-post.style2 .ecmd-events-readmore .ecmd-event-readmore"
+    },
+    "category_style": {
+      "type": "object",
+      "selector": "{{selector}} .ecmd-list-post.style2 .ecmd-category ul li a"
+    },
+    "cost_style": {
+      "type": "object",
+      "selector": "{{selector}} .ecmd-list-post.style2 .ecmd-readmore-cost .ecmd-rate-area"
+    },
+    "select_layouts": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "list"
+          }
+        }
+      }
+    },
+    "layout_style": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "style1"
+          }
+        }
+      }
+    },
+    "posts_per_page": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": {
+              "posts_per_page": "6"
+            }
+          }
+        }
+      }
+    },
+    "show_container_title": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "on"
+          }
+        }
+      }
+    },
+    "show_container_date": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "on"
+          }
+        }
+      }
+    },
+    "date_formats": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "sedt"
+          }
+        }
+      }
+    },
+    "show_date_highlight": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "on"
+          }
+        }
+      }
+    },
+    "date_highlight_format": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "DM"
+          }
+        }
+      }
+    },
+    "show_event_image": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "on"
+          }
+        }
+      }
+    },
+    "show_find_out_more": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "on"
+          }
+        }
+      }
+    },
+    "find_out_more_text": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "Find Out More"
+          }
+        }
+      }
+    },
+    "show_cost": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "on"
+          }
+        }
+      }
+    },
+    "show_venue": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "on"
+          }
+        }
+      }
+    },
+    "order": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "ASC"
+          }
+        }
+      }
+    },
+    "show_description": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "off"
+          }
+        }
+      }
+    },
+    "description_count_type": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "short"
+          }
+        }
+      }
+    },
+    "description_count": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "20"
+          }
+        }
+      }
+    },
+    "show_category": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "on"
+          }
+        }
+      }
+    }
+  }
+}
