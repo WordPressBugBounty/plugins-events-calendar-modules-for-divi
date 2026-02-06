@@ -12,7 +12,6 @@ class ECMD_feedback {
 		private $installation_date_option = 'ecmd-installDate';
 		private $review_option = 'ecmd-Boxes-ratingDiv';
 		private $review_link = 'https://wordpress.org/plugins/events-calendar-modules-for-divi/#reviews';
-		private $plugin_logo = 'assets/images/Event_List.svg';
 
 
 	/*
@@ -89,16 +88,13 @@ class ECMD_feedback {
 	function ecmd_create_notice_content() {
 
 		$html = '
-		<div data-ajax-url="' . admin_url( 'admin-ajax.php' ) . '" data-nonce="' . wp_create_nonce( 'ecmd_dismiss_notice_nonce' ) . '" data-ajax-callback="' . esc_html( $this->plugin_slug ) . '_dismiss_notice'  . '" class="' . esc_html( $this->plugin_slug . '-review-notice-wrapper notice' ) . '">
-			<div class="logo_container">
-				<a href="' . esc_url( $this->review_link ) . '" target="_blank"><img src="' . esc_url( $this->plugin_url ) . esc_html( $this->plugin_logo ) . '" alt="' . esc_html( $this->plugin_name ) . '"></a>
-			</div>
+		<div data-ajax-url="' . admin_url( 'admin-ajax.php' ) . '" data-nonce="' . wp_create_nonce( 'ecmd_dismiss_notice_nonce' ) . '" data-ajax-callback="' . esc_html( $this->plugin_slug ) . '_dismiss_notice'  . '" class="' . esc_html( $this->plugin_slug . '-review-notice-wrapper notice-info notice is-dismissible' ) . '">
 			<div class="message_container">
-				<p>Thanks for using <b>' . esc_html( $this->plugin_name ) . '</b> WordPress plugin. We hope it meets your expectations!<br/>Please give us a quick rating, it works as a boost for us to keep working on more <a href="https://coolplugins.net" target="_blank"><strong>Cool Plugins</strong></a>!</p>
+				<p>Thanks for using <b>' . esc_html( $this->plugin_name ) . '</b> WordPress plugin. We hope it meets your expectations!<br/>Please give us a quick rating, it works as a boost for us to keep working on more <a href="https://coolplugins.net/?utm_source=ecmd_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=review_notice" target="_blank"><strong>Cool Plugins</strong></a>!</p>
 				<ul>
 					<li><a href="' . esc_url( $this->review_link ) . '" class="rate-it-btn button button-primary" target="_blank" title="Submit A Review...">Rate Now! ★★★★★</a></li>
-					<li><a href="javascript:void(0);" class="already-rated-btn button button-secondary ' . esc_html( $this->plugin_slug ) . '_dismiss_notice" title="Already Rated - Close This Notice!">Already Rated</a></li>
-					<li><a href="javascript:void(0);" class="already-rated-btn button button-secondary ' . esc_html( $this->plugin_slug ) . '_dismiss_notice" title="Not Interested - Close This Notice!">Not Interested</a></li>
+					<li><a href="javascript:void(0);" class="already-rated-btn button button-secondary ' . esc_html( $this->plugin_slug ) . '_dismiss_notice" title="Already Rated - Close This Notice!"> Already Reviewed</a></li>
+					<li><a href="javascript:void(0);" class="already-rated-btn button button-secondary ' . esc_html( $this->plugin_slug ) . '_dismiss_notice" title="Not Interested - Close This Notice!"> Not Interested</a></li>
 				</ul>
 			</div>
 		</div>

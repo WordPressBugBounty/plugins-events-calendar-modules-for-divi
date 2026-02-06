@@ -3,9 +3,9 @@ Contributors: satindersingh, coolplugins, narinder-singh
 Donate link: https://coolplugins.net/donate  
 Tags: divi, events, module, calendar, event calendar  
 Requires at least: 5.0  
-Tested up to: 6.8.2
+Tested up to: 6.9
 Requires PHP: 7.2  
-Stable tag: 1.1.2 
+Stable tag: 1.1.3
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -150,6 +150,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 3. Example of an alternate list design.  
 
 == Changelog ==
+
+= Version 1.1.3 | 18 Nov 2025  =
+* Improved: Rating div styling.
+* Tested upto: The Events Calendar version 6.15.11
 
 = Version 1.1.2 | 29 Aug 2025  =
 * Fixed: Addressed security vulnerabilities.
