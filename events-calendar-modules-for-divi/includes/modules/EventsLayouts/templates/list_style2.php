@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * It includes the event image, date highlight, category, schedule, title,
  * description, venue, "find out more" link, and cost.
  */
-
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 // checking the event type.
 $event_type = tribe( 'tec.featured_events' )->is_featured( $event_id ) ? sanitize_text_field( 'ecmd-featured-event' ) : sanitize_text_field( 'ecmd-simple-event' );
 

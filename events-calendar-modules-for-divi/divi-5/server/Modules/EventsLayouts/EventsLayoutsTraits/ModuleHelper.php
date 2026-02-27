@@ -70,6 +70,7 @@ class ModuleHelper
                 ),
             );
 
+            // phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_key, WordPress.DB.SlowDBQuery.slow_db_query_meta_query
             $ecmd_args['meta_key']   = $attribute['key'];
             $ecmd_args['meta_query'] = $attribute['meta_date'];
         }

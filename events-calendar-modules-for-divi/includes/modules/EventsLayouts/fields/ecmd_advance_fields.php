@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 // Initialize the advanced fields array with all fields set to false (hidden).
 		$advanced_fields                   = array();
 		$advanced_fields['background']     = false;

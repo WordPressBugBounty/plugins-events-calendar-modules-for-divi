@@ -38,7 +38,7 @@ class ECMD_feedback {
 	function enqueue_feedback_scripts() {
 		$screen = get_current_screen();
 		if ( isset( $screen ) && $screen->id == 'plugins' ) {
-			wp_enqueue_script('ecmd-feedback-script', esc_url( $this->plugin_url ) . 'admin/feedback/js/admin-feedback.min.js', array( 'jquery' ), esc_html( $this->plugin_version ) );
+			wp_enqueue_script('ecmd-feedback-script', esc_url( $this->plugin_url ) . 'admin/feedback/js/admin-feedback.min.js', array( 'jquery' ), esc_html( $this->plugin_version ), true);
 			wp_enqueue_style('ecmd-feedback-css', esc_url( $this->plugin_url ) . 'admin/feedback/css/admin-feedback.min.css', null, esc_html( $this->plugin_version ) );
 		}
 	}
@@ -73,7 +73,7 @@ class ECMD_feedback {
 		}
 
 		// grab plugin installation date and compare it with current date
-		$display_date = date( 'Y-m-d h:i:s' );
+		$display_date = gmdate( 'Y-m-d h:i:s' );
 		$install_date = new DateTime( $installation_date );
 		$current_date = new DateTime( $display_date );
 		$difference   = $install_date->diff( $current_date );
@@ -114,24 +114,24 @@ class ECMD_feedback {
 		}
 		$deactivate_reasons = array(
 			'didnt_work_as_expected'         => array(
-				'title'             => __( 'The plugin didn\'t work as expected.', 'timeline-module-for-divi' ),
+				'title'             => __( 'The plugin didn\'t work as expected.', 'events-calendar-modules-for-divi' ),
 				'input_placeholder' => 'What did you expect?',
 			),
 			'found_a_better_plugin'          => array(
-				'title'             => __( 'I found a better plugin.', 'timeline-module-for-divi' ),
-				'input_placeholder' => __( 'Please share which plugin.', 'timeline-module-for-divi' ),
+				'title'             => __( 'I found a better plugin.', 'events-calendar-modules-for-divi' ),
+				'input_placeholder' => __( 'Please share which plugin.', 'events-calendar-modules-for-divi' ),
 			),
 			'couldnt_get_the_plugin_to_work' => array(
-				'title'             => __( 'The plugin is not working.', 'timeline-module-for-divi' ),
+				'title'             => __( 'The plugin is not working.', 'events-calendar-modules-for-divi' ),
 				'input_placeholder' => 'Please share your issue. So we can fix that for other users.',
 			),
 			'temporary_deactivation'         => array(
-				'title'             => __( 'It\'s a temporary deactivation.', 'timeline-module-for-divi' ),
+				'title'             => __( 'It\'s a temporary deactivation.', 'events-calendar-modules-for-divi' ),
 				'input_placeholder' => '',
 			),
 			'other'                          => array(
-				'title'             => __( 'Other reason.', 'timeline-module-for-divi' ),
-				'input_placeholder' => __( 'Please share the reason.', 'timeline-module-for-divi' ),
+				'title'             => __( 'Other reason.', 'events-calendar-modules-for-divi' ),
+				'input_placeholder' => __( 'Please share the reason.', 'events-calendar-modules-for-divi' ),
 			),
 		);
 
@@ -141,7 +141,7 @@ class ECMD_feedback {
 			<div class="cp-feedback-wrapper">
 
 			<div class="cp-feedback-header">
-				<div class="cp-feedback-title"><?php echo esc_html__( 'Quick Feedback', 'timeline-module-for-divi' ); ?></div>
+				<div class="cp-feedback-title"><?php echo esc_html__( 'Quick Feedback', 'events-calendar-modules-for-divi' ); ?></div>
 				<div class="cp-feedback-title-link">A plugin by <a href="https://coolplugins.net/?utm_source=<?php echo esc_attr( $this->plugin_slug ); ?>_plugin&utm_medium=inside&utm_campaign=coolplugins&utm_content=deactivation_feedback" target="_blank">CoolPlugins.net</a></div>
 			</div>
 
@@ -150,7 +150,7 @@ class ECMD_feedback {
 			</div>
 
 			<div class="cp-feedback-form-wrapper">
-				<div class="cp-feedback-form-title"><?php echo esc_html__( 'If you have a moment, please share the reason for deactivating this plugin.', 'timeline-module-for-divi' ); ?></div>
+				<div class="cp-feedback-form-title"><?php echo esc_html__( 'If you have a moment, please share the reason for deactivating this plugin.', 'events-calendar-modules-for-divi' ); ?></div>
 				<form class="cp-feedback-form" method="post">
 					<?php
 					wp_nonce_field( '_cool-plugins_deactivate_feedback_nonce' );
@@ -171,7 +171,7 @@ class ECMD_feedback {
 					<?php endforeach; ?>
 					
 					<div class="cp-feedback-terms">
-					<input class="cp-feedback-terms-input" id="cp-feedback-terms-input" type="checkbox"><label for="cp-feedback-terms-input"><?php echo esc_html__( 'I agree to share my feedback with Cool Plugins, including site URL and admin email, to enable them to address my inquiry.', 'timeline-module-for-divi' ); ?></label>
+					<input class="cp-feedback-terms-input" id="cp-feedback-terms-input" type="checkbox"><label for="cp-feedback-terms-input"><?php echo esc_html__( 'I agree to share my feedback with Cool Plugins, including site URL and admin email, to enable them to address my inquiry.', 'events-calendar-modules-for-divi' ); ?></label>
 					</div>
 
 					<div class="cp-feedback-button-wrapper">
@@ -193,6 +193,7 @@ class ECMD_feedback {
 	
 		// Server and WP environment details
 		$server_info = [
+			// phpcs:disable WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.DB.DirectDatabaseQuery.DirectQuery, 	WordPress.DB.DirectDatabaseQuery.NoCaching
 			'server_software'        => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field($_SERVER['SERVER_SOFTWARE']) : 'N/A',
 			'mysql_version'          => $wpdb ? sanitize_text_field($wpdb->get_var("SELECT VERSION()")) : 'N/A',
 			'php_version'            => sanitize_text_field(phpversion() ?: 'N/A'),
@@ -248,30 +249,31 @@ class ECMD_feedback {
 
 
 	function submit_deactivation_response() {
+		// phpcs:disable WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 		if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_POST['_wpnonce'] ), '_cool-plugins_deactivate_feedback_nonce' ) ) {
 			wp_send_json_error();
 		} else {
 			$reason             = isset( $_POST['reason'] ) ? sanitize_text_field( $_POST['reason'] ) : '';
 			$deactivate_reasons = array(
 				'didnt_work_as_expected'         => array(
-					'title'             => __( 'The plugin didn\'t work as expected', 'timeline-module-for-divi' ),
+					'title'             => __( 'The plugin didn\'t work as expected', 'events-calendar-modules-for-divi' ),
 					'input_placeholder' => 'What did you expect?',
 				),
 				'found_a_better_plugin'          => array(
-					'title'             => __( 'I found a better plugin', 'timeline-module-for-divi' ),
-					'input_placeholder' => __( 'Please share which plugin.', 'timeline-module-for-divi' ),
+					'title'             => __( 'I found a better plugin', 'events-calendar-modules-for-divi' ),
+					'input_placeholder' => __( 'Please share which plugin.', 'events-calendar-modules-for-divi' ),
 				),
 				'couldnt_get_the_plugin_to_work' => array(
-					'title'             => __( 'The plugin is not working', 'timeline-module-for-divi' ),
+					'title'             => __( 'The plugin is not working', 'events-calendar-modules-for-divi' ),
 					'input_placeholder' => 'Please share your issue. So we can fix that for other users.',
 				),
 				'temporary_deactivation'         => array(
-					'title'             => __( 'It\'s a temporary deactivation.', 'timeline-module-for-divi' ),
+					'title'             => __( 'It\'s a temporary deactivation.', 'events-calendar-modules-for-divi' ),
 					'input_placeholder' => '',
 				),
 				'other'                          => array(
-					'title'             => __( 'Other', 'cool-plugins' ),
-					'input_placeholder' => __( 'Please share the reason.', 'timeline-module-for-divi' ),
+					'title'             => __( 'Other', 'events-calendar-modules-for-divi' ),
+					'input_placeholder' => __( 'Please share the reason.', 'events-calendar-modules-for-divi' ),
 				),
 			);
 
@@ -279,7 +281,7 @@ class ECMD_feedback {
 			$deativation_reason = array_key_exists( $reason, $deactivate_reasons ) ? $reason : 'other';
 
 			$deativation_reason = esc_html($deativation_reason);
-			$sanitized_message = empty( $_POST['message'] ) || sanitize_text_field( $_POST['message'] ) == '' ? 'N/A' : sanitize_text_field( $_POST['message'] );
+			$sanitized_message = empty( sanitize_text_field( wp_unslash($_POST['message']) ) ) || sanitize_text_field( wp_unslash($_POST['message']) ) == '' ? 'N/A' : sanitize_text_field( wp_unslash($_POST['message']) );
 			$admin_email       = sanitize_email( get_option( 'admin_email' ) );
 			$site_url          = esc_url( site_url() );
 			$install_date 		= get_option('ecmd_install_date');

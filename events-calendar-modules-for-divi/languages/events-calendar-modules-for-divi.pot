@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Events Calendar Modules For Divi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-02 10:38+0000\n"
+"POT-Creation-Date: 2026-02-19 06:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,374 +13,465 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.11; wp-6.6.1\n"
+"X-Loco-Version: 2.8.1; wp-6.9.1; php-8.4.4\n"
 "X-Domain: events-calendar-modules-for-divi"
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:404
-msgid " Category Background Color"
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:339
+msgid " Font Size"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:416
-msgid " Category Text Color"
-msgstr ""
-
-#: includes/modules/EventsLayouts/EventsLayouts.php:447
-msgid " Date Highlight Background Color"
-msgstr ""
-
-#: includes/modules/EventsLayouts/EventsLayouts.php:436
-msgid " Date Highlight Text Color"
-msgstr ""
-
-#: includes/modules/EventsLayouts/EventsLayouts.php:214
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:140
 msgid " Show Date Highlight"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:265
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:191
 msgid " Show Find Out More"
 msgstr ""
 
-#: includes/modules/ModulesCore/ModulesHelper.php:394
-#: includes/modules/ModulesCore/ModulesHelper.php:396
-#, php-format
-msgid "%1$s - %2$s"
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:327
+msgid " Text Color"
 msgstr ""
 
-#: includes/modules/ModulesCore/ModulesHelper.php:400
-#: includes/modules/ModulesCore/ModulesHelper.php:402
+#. %1$s is the start date, %2$s is the end date.
+#: includes/modules/ModulesCore/ModulesHelper.php:484
+#: includes/modules/ModulesCore/ModulesHelper.php:487
+#: divi-5/server/Modules/EventsLayouts/EventsLayoutsTraits/ModuleHelper.php:331
+#: divi-5/server/Modules/EventsLayouts/EventsLayoutsTraits/ModuleHelper.php:334
 #, php-format
-msgid "%s"
+msgid "%1$s - %2$s"
 msgstr ""
 
 #. Description of the plugin
 msgid "A divi module to show your events in beautiful designs"
 msgstr ""
 
-#: includes/modules/ModulesCore/ModulesHelper.php:384
-#: includes/modules/ModulesCore/ModulesHelper.php:386
+#: includes/modules/ModulesCore/ModulesHelper.php:473
+#: includes/modules/ModulesCore/ModulesHelper.php:475
+#: divi-5/server/Modules/EventsLayouts/EventsLayoutsTraits/ModuleHelper.php:320
+#: divi-5/server/Modules/EventsLayouts/EventsLayoutsTraits/ModuleHelper.php:322
 msgid "All day"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:427
-msgid "Category Custom Padding"
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:360
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:387
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:472
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:517
+msgid "Background Color"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:228
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:368
+msgid "Background Hover Color"
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:410
+msgid "Border Color"
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:454
+msgid "Border Radius"
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:440
+msgid "Border Style"
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:422
+msgid "Border Width"
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:154
 msgid "Choose a Date format from the list of given formats for Highlight Date"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:185
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:111
 msgid ""
 "Choose a Date format from the list of given formats to display your date."
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:255
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:181
 msgid "Choose an Image"
-msgstr ""
-
-#: includes/modules/EventsLayouts/EventsLayouts.php:509
-#: includes/modules/EventsLayouts/EventsLayouts.php:532
-msgid "Container"
-msgstr ""
-
-#: includes/modules/EventsLayouts/EventsLayouts.php:362
-msgid "Container Background Color"
-msgstr ""
-
-#: includes/modules/EventsLayouts/EventsLayouts.php:370
-msgid "Container Background Hover Color"
 msgstr ""
 
 #. Author of the plugin
 msgid "Cool Plugins"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:252
+#: includes/loader.php:30
+msgid "Custom Divi module could not be loaded. File is not readable."
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:178
 msgid "Default Image"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:194
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:282
+msgid "Description Count"
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:269
+msgid "Description Type"
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:120
 msgid ""
 "Enable this setting to show only featured events, by default the setting "
 "shows both fetaured and non-featured events"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:82
+#: includes/modules/EventsLayouts/EventsLayouts.php:72
 msgid "Event Category"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:61
+#: includes/modules/EventsLayouts/EventsLayouts.php:51
 msgid "Event Container"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:565
-msgid "Event Content Style"
+#: includes/modules/EventsLayouts/EventsLayouts.php:75
+msgid "Event Cost"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:70
+#: includes/modules/EventsLayouts/EventsLayouts.php:60
 msgid "Event Date"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:554
-msgid "Event Date Font"
-msgstr ""
-
-#: includes/modules/EventsLayouts/EventsLayouts.php:73
+#: includes/modules/EventsLayouts/EventsLayouts.php:63
 msgid "Event Description"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:79
+#: includes/modules/EventsLayouts/EventsLayouts.php:69
 msgid "Event Find Out More"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:586
-msgid "Event Find out more Style"
-msgstr ""
-
-#: includes/modules/EventsLayouts/EventsLayouts.php:67
+#: includes/modules/EventsLayouts/EventsLayouts.php:57
 msgid "Event Highlight Date"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:52
+#: includes/modules/EventsLayouts/EventsLayouts.php:42
 msgid "Event Query Settings"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:175
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:101
 msgid "Event Time"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:64
+#: includes/modules/EventsLayouts/EventsLayouts.php:54
 msgid "Event Title"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:544
-msgid "Event Title Font"
-msgstr ""
-
-#: includes/modules/EventsLayouts/EventsLayouts.php:76
+#: includes/modules/EventsLayouts/EventsLayouts.php:66
 msgid "Event Venue"
-msgstr ""
-
-#: includes/modules/EventsLayouts/EventsLayouts.php:575
-msgid "Event Venue Style"
 msgstr ""
 
 #. Name of the plugin
 msgid "Events Calendar Modules For Divi"
 msgstr ""
 
-#: events-calendar-modules-for-divi.php:174
+#: events-calendar-modules-for-divi.php:110
 msgid ""
 "Events Calendar Modules For Divi requires Divi (Theme) to be installed and "
 "activated."
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:184
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:110
 msgid "Events Date Formats"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:46
+#: includes/modules/EventsLayouts/EventsLayouts.php:36
 msgid "Events Layouts"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:205
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:131
 msgid "Events Order"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:395
-msgid "Find More Custom Padding"
-msgstr ""
-
-#: includes/modules/EventsLayouts/EventsLayouts.php:289
-#: includes/modules/EventsLayouts/EventsLayouts.php:596
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:214
 msgid "Find Out More"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:800
+#: includes/modules/EventsLayouts/EventsLayouts.php:223
 msgid "Find out more"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:386
-msgid "Find Out More Background Color"
-msgstr ""
-
-#: includes/modules/EventsLayouts/EventsLayouts.php:282
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:207
 msgid "Find Out More Text"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:344
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:312
 msgid "Here you can choose whether to show Category or not."
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:328
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:296
 msgid "Here you can choose whether to show cost or not."
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:312
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:244
 msgid "Here you can choose whether to show description or not."
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:295
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:220
 msgid "Here you can choose whether to show venue or not."
 msgstr ""
 
 #. Author URI of the plugin
-msgid "https://coolplugins.net/"
+msgid ""
+"https://coolplugins.net/?"
+"utm_source=ecmd_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=plugins_list"
 msgstr ""
 
 #. URI of the plugin
-msgid "https://www.eventscalendaraddons.com/divi"
-msgstr ""
-
-#: events-calendar-modules-for-divi.php:140
 msgid ""
-"In order to use Events Divi Module addon, Please first install the latest "
-"version of The Events Calendar"
+"https://eventscalendaraddons.com/divi/?"
+"utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=demo&utm_content=top_view_demo"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:198
-#: includes/modules/EventsLayouts/EventsLayouts.php:221
-#: includes/modules/EventsLayouts/EventsLayouts.php:246
-#: includes/modules/EventsLayouts/EventsLayouts.php:272
-#: includes/modules/EventsLayouts/EventsLayouts.php:301
-#: includes/modules/EventsLayouts/EventsLayouts.php:318
-#: includes/modules/EventsLayouts/EventsLayouts.php:334
-#: includes/modules/EventsLayouts/EventsLayouts.php:350
+#: admin/feedback/admin-feedback-form.php:174
+msgid ""
+"I agree to share my feedback with Cool Plugins, including site URL and admin "
+"email, to enable them to address my inquiry."
+msgstr ""
+
+#: admin/feedback/admin-feedback-form.php:263
+msgid "I found a better plugin"
+msgstr ""
+
+#: admin/feedback/admin-feedback-form.php:121
+msgid "I found a better plugin."
+msgstr ""
+
+#: admin/feedback/admin-feedback-form.php:153
+msgid ""
+"If you have a moment, please share the reason for deactivating this plugin."
+msgstr ""
+
+#: admin/feedback/admin-feedback-form.php:129
+#: admin/feedback/admin-feedback-form.php:271
+msgid "It's a temporary deactivation."
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:124
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:147
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:172
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:198
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:226
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:250
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:302
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:318
 msgid "No"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:163
+#: includes/modules/EventsLayouts/EventsLayouts.php:190
+msgid "No events found."
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:89
 msgid "Number of Events"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:227
+#: admin/feedback/admin-feedback-form.php:275
+msgid "Other"
+msgstr ""
+
+#: admin/feedback/admin-feedback-form.php:133
+msgid "Other reason."
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:400
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:496
+msgid "Padding"
+msgstr ""
+
+#: admin/feedback/admin-feedback-form.php:134
+#: admin/feedback/admin-feedback-form.php:276
+msgid "Please share the reason."
+msgstr ""
+
+#: admin/feedback/admin-feedback-form.php:122
+#: admin/feedback/admin-feedback-form.php:264
+msgid "Please share which plugin."
+msgstr ""
+
+#: admin/feedback/admin-feedback-form.php:144
+msgid "Quick Feedback"
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:153
 msgid "Select Highlight Date Format"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:144
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:58
 msgid "Select Layout"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:154
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:68
 msgid "Select Style"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:256
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:182
 msgid "Set As Image"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:164
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:90
 msgid "Set The number of  events you want to display"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:327
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:295
 msgid "Show Cost"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:311
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:243
 msgid "Show Description"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:343
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:311
 msgid "Show Event Category"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:239
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:165
 msgid "Show Featured Image"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:193
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:119
 msgid "Show Only Featured Events"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:294
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:219
 msgid "Show Venue"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:378
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:379
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:484
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:506
 msgid "Text Color"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:283
+#: admin/feedback/admin-feedback-form.php:259
+msgid "The plugin didn't work as expected"
+msgstr ""
+
+#: admin/feedback/admin-feedback-form.php:117
+msgid "The plugin didn't work as expected."
+msgstr ""
+
+#: admin/feedback/admin-feedback-form.php:267
+msgid "The plugin is not working"
+msgstr ""
+
+#: admin/feedback/admin-feedback-form.php:125
+msgid "The plugin is not working."
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:208
 msgid ""
 "This setting helps you to change the Find Out More text to anything you want."
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:176
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:102
 msgid "This setting will help you showcase future, past or both time events."
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:206
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:132
 msgid ""
 "This setting will help you to show Events in Ascending and Descending Order"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:240
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:166
 msgid "To add Event Featured Image"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:253
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:179
 msgid "To add your default image to the events without image"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:405
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:473
 msgid "To change the background color category"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:448
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:518
 msgid "To change the background color Date Highlight"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:387
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:388
 msgid "To change the background color find out more"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:363
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:361
 msgid "To change the background color for the main container"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:371
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:369
 msgid "To change the background hover color for the main container"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:417
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:411
+msgid "To change the border color find out more"
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:455
+msgid "To change the border radius find out more"
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:441
+msgid "To change the border style find out more"
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:423
+msgid "To change the border width find out more"
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:340
+msgid "To change the font size Cost"
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:485
 msgid "To change the Text color category"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:437
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:328
+msgid "To change the Text color Cost"
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:507
 msgid "To change the Text color Date Highlight"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:379
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:380
 msgid "To change the text color for the venue"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:145
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:283
+msgid "To select different description count from the."
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:270
+msgid "To select different description type from the."
+msgstr ""
+
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:59
 msgid ""
 "To select different layouts from the given list, change this setting to any "
 "style you want."
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:266
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:192
 msgid "To Show Find Out More"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:215
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:141
 msgid "To Show Highlight date"
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:155
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:69
 msgid ""
 "To showcase different styles, change this setting to any style you want."
 msgstr ""
 
-#: includes/modules/EventsLayouts/EventsLayouts.php:197
-#: includes/modules/EventsLayouts/EventsLayouts.php:220
-#: includes/modules/EventsLayouts/EventsLayouts.php:245
-#: includes/modules/EventsLayouts/EventsLayouts.php:271
-#: includes/modules/EventsLayouts/EventsLayouts.php:300
-#: includes/modules/EventsLayouts/EventsLayouts.php:317
-#: includes/modules/EventsLayouts/EventsLayouts.php:333
-#: includes/modules/EventsLayouts/EventsLayouts.php:349
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:123
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:146
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:171
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:197
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:225
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:249
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:301
+#: includes/modules/EventsLayouts/fields/ecmd_fields.php:317
 msgid "Yes"
 msgstr ""

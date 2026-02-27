@@ -1,199 +1,199 @@
 === Events Calendar Modules for Divi ===
-Contributors: satindersingh, coolplugins, narinder-singh
-Donate link: https://coolplugins.net/donate  
-Tags: divi, events, module, calendar, event calendar  
-Requires at least: 5.0  
+Contributors: satindersingh, narinder-singh, coolplugins, eventscalendaraddons
+Donate link: https://donate.stripe.com/5kQdR92iBevO75WbPm6c00i
+Tags: the events calendar, event calendar, events, divi theme, divi module
+Requires at least: 5.0
 Tested up to: 6.9
-Requires PHP: 7.2  
-Stable tag: 1.1.3
-License: GPLv2 or later  
-License URI: https://www.gnu.org/licenses/gpl-2.0.html  
+Requires PHP: 7.2
+Stable tag: 1.1.4
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Integrate The Events Calendar with Divi Builder, and display or customize event listings directly inside the Divi.
+Integrate The Events Calendar with Divi Theme and use Divi event calendar modules to design and display event listings easily inside Divi Builder.
 
 == Description ==
 
-### Showcase your events beautifully inside Divi
+### The Events Calendar Divi Integration
 
-**[Events Calendar Modules for Divi](https://coolplugins.net/product/the-events-calendar-divi-modules/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=top_description)** plugin is a powerful addon that connects The Events Calendar plugin with the **Divi Builder.** By default, The Events Calendar provides basic event pages, but the layouts are not highly customizable. With this addon, you can design modern and stylish event sections inside Divi using **drag-and-drop modules**.
+**[Events Calendar Modules for Divi](https://eventscalendaraddons.com/plugin/the-events-calendar-modules-for-divi/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=top_description)** is an addon for [The Events Calendar](https://stellarwp.pxf.io/tec) WordPress plugin that provides custom Divi event modules to display upcoming events inside the Divi Builder.
 
-https://www.youtube.com/watch?v=Z9s-7RgxZu8&ab_channel=CoolPlugins
+If you are looking for a simple way to use The Events Calendar with Divi Theme, this plugin makes it easy to design modern event list sections directly inside your Divi pages. You can control event query settings, filter events by date, and fully style your event calendar layout using Divi’s module built-in design controls.
 
-Whether you’re running a small workshop, a series of classes, or large conferences, this plugin helps you display events in a way that matches your site’s design and engages your audience.
+https://youtu.be/Z9s-7RgxZu8
 
+### Live Demos
 
-### Key Features
+* **View FREE Demos:** [Events List – Minimal](https://eventscalendaraddons.com/divi/minimal-list-styles/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=demo_free&utm_content=below_video) | [Events List – Modern](https://eventscalendaraddons.com/divi/modern-list-styles/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=demo_free&utm_content=below_video)
 
-- **Divi Builder Integration**: The plugin adds new event modules directly inside the Divi Builder, just drag and drop event modules just like any other Divi module, making it easier to design event sections.
+* **[View PRO Demos](https://eventscalendaraddons.com/demos/the-events-calendar-modules-for-divi/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=demo_pro&utm_content=below_video):** Create advanced Events Grid and Carousel layouts inside Divi Builder.
 
-- **List Layout**: Display events in a professional list format. Each event displaying details like title, date, and time, making it easy for visitors to quickly scan upcoming events.
+  * **Events Grid Layout:** [Minimal Grid](https://eventscalendaraddons.com/divi/minimal-grid-styles/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=demo_pro&utm_content=below_video) | [Modern Grid](https://eventscalendaraddons.com/divi/modern-grid-style/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=demo_pro&utm_content=below_video)
+  * **Events Carousel Layout:** [Minimal Carousel](https://eventscalendaraddons.com/divi/minimal-carousel/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=demo_pro&utm_content=below_video) | [Modern Carousel](https://eventscalendaraddons.com/divi/modern-carousel/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=demo_pro&utm_content=below_video)
 
-- **Multiple Styles for List Layout**: Choose from pre-designed list styles according to your website. 
+== Plugin Features ==
 
-- **Customization Options**: Adjust colors, fonts, and styles using Divi’s built-in design controls. You can also refine details like backgrounds, text colors, spacing, and typography.
+* **Divi Events Calendar Module:** Adds a dedicated Events module inside Divi Builder to display The Events Calendar events directly on any page or section.
+* **Event List Layout:** Show upcoming or past events in a clean and professional list layout. Choose from pre-designed list styles to match your Divi website design.
+* **Event Query & Design Controls:** Control how many events to display, manage event order, and customize colors, fonts, and other styling options directly inside Divi module settings.
+* **Responsive & Mobile Friendly:** All event layouts automatically adjust for desktop, tablet, and mobile devices. Simply drag and drop the Events module inside Divi Builder.
 
-- **Mobile-Friendly Design**: All layouts are fully responsive. Events will automatically adjust to different screen sizes.
+== Premium Features ==
 
-- **Easy to Use**: With a simple interface and ready-made layouts, you can display and style events without needing coding or web design expertise.
+[Upgrade to the Pro version](https://eventscalendaraddons.com/plugin/the-events-calendar-modules-for-divi/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=pro_features) to unlock advanced Divi event calendar layouts and design controls.
 
-[Check Free Demos](https://eventscalendaraddons.com/divi/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=demo&utm_content=view_free_demos)
- 
-### Pro features
+* **[Events Grid & Carousel Layouts](https://eventscalendaraddons.com/doc/events-calendar-modules-for-divi-layouts/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=docs&utm_content=pro_features):**  
+Display The Events Calendar events in beautiful Grid, Carousel, or Slider layouts inside Divi Builder. Perfect for conferences, workshops, classes, community programs, and business events. Choose from modern and minimal design styles for List, Grid, and Carousel layouts.
 
-* **Multiple Layouts** - Choose from versatile layout options, including list and grid views, to showcase events in the best format for your site. (Note: The free version includes only a single list layout).
+* **Advanced [Event Query](https://eventscalendaraddons.com/doc/events-calendar-modules-for-divi-content-settings/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=docs&utm_content=pro_features) & Design Controls:**  
+Filter events by featured status, date range, categories, or tags. Display only upcoming, past, or specific events exactly the way you need. Get extended design settings for spacing, alignment, typography, background, and layout structure inside Divi Builder.
 
-* **Multiple Styles for Each Layout** - Customize each layout with a variety of styles, offering two distinct design options per layout.
+* **Load More Functionality:**  
+Add an AJAX Load More button to dynamically load additional events without page refresh, improving performance and user experience.
 
-* **Customizable Design Options** - Adjust colors, fonts, and other design elements, ensuring your event modules match your site’s branding perfectly.
+= Why Use Events Calendar Modules for Divi? =
 
-* **Advanced Event Query Settings** - Filter events based on criteria like featured status and date ranges, allowing you to change your event feed to specific needs.
+If you are building an event website with Divi and using The Events Calendar plugin, the default event templates may not match your branding or layout needs. This plugin allows you to create a fully customized event showcase directly inside Divi Builder without editing theme files. You can design modern event listing sections, highlight featured events, and control how your event calendar appears across your website.
 
-* **Load More Functionality** - Let users load additional events dynamically, enhancing engagement without needing page reloads.
+Whether you manage ticket booking events, workshops, conferences, webinars, training programs, or community meetups, you can display event schedules, venue details, and upcoming programs in a structured and professional layout. It is perfect for event organizers, educational institutes, agencies, and businesses that want more design flexibility while still using The Events Calendar for event management.
 
-* **Customizable Event Details** - Decide which details to display, with options to show or hide the event title, description, venue, cost, and more.
+== More Addons for The Events Calendar ==
 
-[Get Pro!!](https://www.elegantthemes.com/affiliates/idevaffiliate.php?id=79863&url=85264)
+* [Events Shortcodes For The Events Calendar](https://eventscalendaraddons.com/plugin/events-shortcodes-pro/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=more_addons): Display events anywhere using shortcodes. Show events in list, grid, carousel, timeline, slider, or accordion layouts.
+* [Event Single Page Builder For The Events Calendar](https://eventscalendaraddons.com/plugin/event-single-page-builder-pro/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=more_addons): Create fully custom single event page layout and replace default template of The Events Calendar.
+* [Events Widgets For Elementor And The Events Calendar](https://eventscalendaraddons.com/plugin/events-widgets-pro/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=more_addons): Insert dynamic event widgets inside Elementor sections with advanced layout styling.
+* [Events Speakers & Sponsors](https://eventscalendaraddons.com/plugin/events-speakers-and-sponsors/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=more_addons): Add speakers and sponsors sections inside your event pages. Showcase keynote speakers, guest presenters, partners, or sponsors.
 
+= Other Plugins by Cool Plugins =
 
-### Explore Our Other The Event Calendar Addons
+* [Timeline Module for Divi](https://cooltimeline.com/plugin/timeline-module-for-divi/): Create beautiful vertical and horizontal timelines in Divi theme.
+* [Contact Form Extender for Divi](https://coolplugins.net/product/contact-form-extender-for-divi-builder/): Extend Divi Contact Form with file upload field, country code selector, and option to save form submissions in your WordPress dashboard.
+* [Cool FormKit](https://coolformkit.com/): Add advanced fields and powerful features to Elementor forms.
+* [AutoPoly](https://coolplugins.net/product/autopoly-ai-translation-for-polylang/): Automatic translate addon for Polylang multilingual plugin.
+* [LocoAI](https://locoaddon.com/): Automatically translate plugin and theme strings inside Loco Translate.
 
-In addition to the **Events Calendar Modules for Divi** plugin, there are more addons available to extend the features of The Events Calendar plugin:
+**Third-Party Services:** This plugin connects to the Cool Plugins feedback server only for opt-in usage data sharing and voluntary feedback submission. Data is transmitted strictly after explicit user consent. No hidden tracking is performed, and no frontend visitor or site user data is collected. For complete details, please review our [Data Usage Policy](https://my.coolplugins.net/terms/usage-tracking/), [TOS](https://my.coolplugins.net/terms/), and [Privacy Policy](https://my.coolplugins.net/terms/privacy-policy/).
 
-* **[Events Single Page Builder Pro](https://eventscalendaraddons.com/plugin/event-single-page-builder-pro/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=epta_more_addons)** - Design stunning single event pages with Elementor using pre-built templates and 20+ customizable widgets.
+**Disclaimer:** This plugin is developed by [Cool Plugins](https://coolplugins.net) as a third-party addon for The Events Calendar and Divi Theme. It is not developed, affiliated with, or endorsed by The Events Calendar, StellarWP, or Elegant Themes. Some links inside this plugin or its readme may be affiliate links, which means we may earn a small commission at no additional cost to you.
 
-* **[Events Shortcodes Pro](https://eventscalendaraddons.com/plugin/events-shortcodes-pro/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=ect_more_addons)** - Events Shortcodes Pro For The Events Calendar adds the missing shortcode functionality to The Events Calendar plugin. With this plugin, you can easily display your events on any page or post in a list, grid, carousel, slider, masonry, accordion, or even a timeline format.
-
-* **[Events Widgets Pro](https://eventscalendaraddons.com/plugin/events-widgets-pro/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=ectbe_more_addons)** - Show events list, grid, carousel, and more in Elementor pages using The Events Calendar Elementor Widgets.
-
-This plugin is not developed by or affiliated with The Events Calendar or Modern Tribe in any way. It is a third party addon.
+**Important Notice:** Migration from Divi 4 to Divi 5 is supported only up to Divi 5 Public Alpha 14. If you plan to upgrade your site or plugins, please complete the migration before Alpha 14. After that version, direct migration from Divi 4 will not be available and may cause compatibility issues.
 
 == Installation ==
 
-#### 1. Install The Dependencies 
+Follow the steps below to install and use **Events Calendar Modules for Divi**.
 
-* Before getting started, ensure you have the **Divi Theme** by Elegant Themes installed and activated. This is essential, as our product is fully integrated with Divi.
+= 1. Install Required Plugins =
 
-#### 2. Upload the Plugin:
+Before using this addon, make sure the following are installed and activated:
 
-- Log in to your **WordPress admin dashboard**.
-- From the left-hand menu, go to **Plugins** > **Add New**.
-- Search "Events Calendar Modules for Divi by coolplugins"
-- Select Events Calendar Modules for Divi created by Cool Plugins
-- After selecting the file, click **Install Now**.
+- Divi Theme by Elegant Themes  
+- The Events Calendar plugin  
 
-#### 3. Activate the Plugin:
+This plugin works as an extension for both.
 
-- Once the installation is complete, click the **Activate Plugin** button.
-- Alternatively, you can navigate to **Plugins** > **Installed Plugins**, find the **Events Calendar Modules for Divi** plugin, and click **Activate**.
+= 2. Install the Plugin =
 
-### Set Up and Customize Your Events Layout
+- Go to **WordPress Admin → Plugins → Add New**  
+- Search for **Events Calendar Modules for Divi**  
+- Click **Install Now**  
+- Click **Activate**
 
-#### 1. Access the Divi Builder:
+= 3. Add Events Module in Divi Builder =
 
-- Go to the page or post where you'd like to add an Events Layout.
-- Click on the **Edit with Divi Builder** button to launch the Divi Builder.
+- Open any page and click **Edit with Divi Builder**  
+- Click the **+** icon to add a new module  
+- Search for **Events Layout** module.  
+- Add it to your page  
+- Configure event query and design settings  
+- Save and publish your page
 
-#### 2. Add the Events Layouts Module:
+= 4. Upgrade to Pro (Optional) =
 
-- In the Divi Builder, click the **+** icon to add a new module.
-- From the list of modules, select the **Events Layouts** module.
+To unlock [Grid layouts, Carousel layouts, and advanced event query controls](https://eventscalendaraddons.com/doc/events-calendar-modules-for-divi-layouts/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=docs&utm_content=installation), upgrade to the Pro version of this plugin.
 
-#### 3. Customize the Events Layouts:
-
-- Once the Events Layouts module is added to your page, you can personalize it to suit your needs.
-  
-- Use the **live preview** in Divi Builder to see your changes in real-time.
-
-#### 4. Save and Publish:
-
-- After customizing your Events Layout, click **Save** in the Divi Builder.
-- Finally, click **Publish** or **Update** to make your Events Layout live on your website.
+https://youtu.be/e4UrZtL7ZEo
 
 == Frequently Asked Questions ==
 
-= How do I add events to my Divi page? =
-Once the plugin is activated, go to Divi Builder, and you’ll see a new "Events Layouts" module. Simply add it to your page and customize it to your preference.
+= How to use The Events Calendar inside Divi Builder? =
+After activating Events Calendar Modules for Divi, open any page with **Divi Builder**, add the **Events Layout Module**, and configure your layout settings. The module pulls events directly from [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/) and allows you to design event listings inside Divi theme.
 
-= Can I personalize the appearance of my events? =
-Absolutely! You can modify the colors, fonts, and styles directly in Divi Builder's module settings to fit your design requirements.
+= Can I display upcoming and past events separately? =
+Yes. You can choose to show upcoming events, past events, or a custom date range using the module’s event query settings inside Divi Builder.
 
-= Is this plugin mobile responsive? =
-Yes, all event layouts created with this plugin are fully responsive, ensuring a seamless display across all devices.
+= Does the free version include Grid and Carousel layouts? =
+No. The free version includes the List layout. Advanced Grid and Carousel layouts are available in the [Pro version](https://eventscalendaraddons.com/plugin/the-events-calendar-modules-for-divi/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=faqs).
 
-= Do I need The Events Calendar plugin to use this? =
-Yes, The Events Calendar plugin must be installed and active for the Events Calendar Modules to function properly.
-
-= Can I display events in different layouts (list, grid, slider)? =
-Yes, the plugin allows you to choose from multiple layouts, such as list, grid, or slider, to showcase your events in Divi.
-
-= Are the event layouts customizable? =
-Yes, you can customize the layouts by adjusting various design settings, including colors, fonts, and layout structure within the Divi Builder.
-
-= Does this plugin affect site performance? =
-No, this plugin is optimized for performance and won’t slow down your site. It’s designed to work efficiently within Divi.
-
-= Can I display past or upcoming events only? =
-Yes, the plugin allows you to filter and display past or upcoming events based on your preference through the module's query settings.
-
-= Does this plugin support custom post types? =
-Currently, the plugin is designed to work specifically with The Events Calendar plugin and may not support custom post types for events.
+= Can I filter events by category or featured events? =
+Yes. In the Pro version, you can filter events by category, featured status, and date range using advanced query controls. You can learn more in the [documentation](https://eventscalendaraddons.com/doc/events-calendar-modules-for-divi-content-settings/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=docs&utm_content=faqs).
 
 = Can I use multiple event modules on the same page? =
-Yes, you can add multiple event modules on the same page, each with different designs and event queries.
+Yes. You can add multiple Events modules on the same Divi page and configure each module with different layouts, event filters, and design settings.
+
+= Will this plugin slow down my website? =
+No. The plugin is lightweight and follows WordPress coding standards. It only loads required assets when the Events module is used on a page, helping maintain good site performance.
 
 = How can I report security bugs? =
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/events-calendar-modules-for-divi)
 
 == Screenshots ==
-1. Events Calendar Modules for Divi Preview
-2. Example of a list view design.  
-3. Example of an alternate list design.  
+
+1. Events Layout - Events Calendar Module
+2. Events List Layout  
+3. Events List Layout - Style 2
+4. Events List Designs
+5. Events List Module Settings
 
 == Changelog ==
 
-= Version 1.1.3 | 18 Nov 2025  =
+= 1.1.4 | 27 Feb 2026 =
+* Improvements: Code optimizations and refinements.
+* Fixed: Issues reported by “Plugin Check” plugin.
+* Updated: Readme file.
+* Tested: Compatible with The Events Calendar version 6.15.17.
+
+= 1.1.3 | 18 Nov 2025 =
 * Improved: Rating div styling.
-* Tested upto: The Events Calendar version 6.15.11
+* Tested: Compatible with The Events Calendar version 6.15.11.
 
-= Version 1.1.2 | 29 Aug 2025  =
-* Fixed: Addressed security vulnerabilities.
-* Fixed: Minor Issues.
+= 1.1.2 | 29 Aug 2025 =
+* Improved: Stability and security updates.
+* Fixed: Minor issues.
 
-= Version 1.1.1 | 04 Apr 2025  =
+= 1.1.1 | 04 Apr 2025 =
 * Added: Compatibility with Divi 5.
-* Added: Full and Short Description Options.
-* Fixed: Minor Issues.
-* Improved: Overall Code.
+* Added: Full and short description options.
+* Fixed: Minor issues.
+* Improved: Overall code quality.
 
-= Version 1.0.5 | 14 Nov 2024 =
-* Added: Feedback Form.
+= 1.0.5 | 14 Nov 2024 =
+* Added: User feedback form.
 
-= Version 1.0.4 | 13 Nov 2024 =
-* Improved: Minor Textual Changes.
-* Improved: Overall code.
+= 1.0.4 | 13 Nov 2024 =
+* Improved: Minor textual changes.
+* Improved: Overall code optimization.
 
-= Version 1.0.3 | 09 Oct 2024 =
-* Added: Add style settings for event cost.
-* Fixed: Fix minor issues.
+= 1.0.3 | 09 Oct 2024 =
+* Added: Style settings for event cost display.
+* Fixed: Minor issues.
 
-= Version 1.0.2 | 11/09/2024 =  
+= 1.0.2 | 11 Sep 2024 =
 * Added: Admin notice and user feedback form.
-* Tweak: Minor Textual changes
+* Tweaked: Minor textual changes.
 
-= Version 1.0.1 | 05/09/2024 =  
-* Removed: Loading icon CSS from wp_head, now enqueued with wp_enqueue_script.  
-* Improved: Enhanced security by blocking direct access to PHP files.  
-* Updated: Prefixed all functions, classes, and other elements to avoid potential conflicts.  
-* Added: Plugin tag to ensure The Events Calendar plugin is installed and active.
+= 1.0.1 | 05 Sep 2024 =
+* Removed: Loading icon CSS from wp_head; now properly enqueued using wp_enqueue_script.
+* Improved: Enhanced security by blocking direct access to PHP files.
+* Updated: Prefixed functions, classes, and other elements to avoid conflicts.
+* Added: Plugin dependency check to ensure The Events Calendar is installed and active.
 
-= Version 1.0.0 | 02/09/2024 =  
-* Initial release with event list style options.  
-* Full customization options for colors, fonts, and styles.  
-* Responsive design for seamless viewing across devices.
+= 1.0.0 | 02 Sep 2024 =
+* Added: Initial release with event list layout.
+* Added: Customization options for colors, fonts, and styles.
+* Added: Responsive design for seamless display across devices.
 
-== ⚠️Important Notice ==
-Migration from Divi 4 to Divi 5 will only be supported till Divi 5 Public Alpha 14. If you are planning to upgrade your site or plugins, please make sure to complete the migration process before Alpha 14. After this point, direct migration from Divi 4 will no longer be available, and this may lead to compatibility issues.
+*Using Pro version?* [Check Pro version changelog here](https://eventscalendaraddons.com/doc/events-calendar-module-for-divi-changelog/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=docs&utm_content=changelog).
 
 == Upgrade Notice ==
-= 1.0.2 =  
-Initial release. No upgrade needed.
+
+= 1.1.1 =
+Code improvements and compatibility with Divi 5.

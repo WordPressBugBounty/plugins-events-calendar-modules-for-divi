@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 foreach ( $events as $event ) {
     $event_id = $event->ID;
     $ev_time  = ECMD_ModulesHelper::ecmd_tribe_event_time( $event_id, false );

@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 // Require PHP files.
 require_once ECMD_DIR . 'divi-5/vendor/autoload.php';
 require_once ECMD_DIR . 'divi-5/server/Modules/Modules.php';

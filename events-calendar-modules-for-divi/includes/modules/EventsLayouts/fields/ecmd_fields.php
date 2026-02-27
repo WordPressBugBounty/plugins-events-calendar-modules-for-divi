@@ -1,5 +1,6 @@
 <?php
 if (!defined('ABSPATH')) exit;
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $option             = array( 'future', 'past', 'all' );
 $order_option       = array( 'ASC', 'DESC' );
 $event_style        = array(
@@ -323,8 +324,8 @@ $content = array(
         ),
     ),
     'cost_text_color' => array(
-		'label'           => esc_html__(' Text Color', 'ecmd-events-calendar-modules-for-divi-pro'),
-		'description'     => esc_html__('To change the Text color Cost', 'ecmd-events-calendar-modules-for-divi-pro'),
+		'label'           => esc_html__(' Text Color', 'events-calendar-modules-for-divi'),
+		'description'     => esc_html__('To change the Text color Cost', 'events-calendar-modules-for-divi'),
 		'type'            => 'color-alpha',
 		'option_category' => 'basic_option',
 		'toggle_slug'     => 'cost_style',
@@ -335,8 +336,8 @@ $content = array(
 		),
 	),
 	'cost_font_size' => array(
-		'label'           => esc_html__(' Font Size', 'ecmd-events-calendar-modules-for-divi-pro'),
-		'description'     => esc_html__('To change the font size Cost', 'ecmd-events-calendar-modules-for-divi-pro'),
+		'label'           => esc_html__(' Font Size', 'events-calendar-modules-for-divi'),
+		'description'     => esc_html__('To change the font size Cost', 'events-calendar-modules-for-divi'),
 		'type'            => 'range',
 		'option_category' => 'basic_option',
 		'toggle_slug'     => 'cost_style',

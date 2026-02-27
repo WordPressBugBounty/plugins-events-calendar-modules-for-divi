@@ -1,18 +1,10 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Event List Module for Events Calendar
  *
  * @package ECMD_EventsLayouts
  */
-
-/**
- * Prevent direct access to the file
- */
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Class ECMD_EventsLayouts
  *
@@ -80,7 +72,7 @@ class ECMD_EventsLayouts extends ECMD_Builder_Module {
 						'title' => esc_html__( 'Event Category', 'events-calendar-modules-for-divi' ),
 					),
 					'cost_style'           => array(
-						'title' => esc_html__('Event Cost', 'ecmd-events-calendar-modules-for-divi-pro'),
+						'title' => esc_html__('Event Cost', 'events-calendar-modules-for-divi'),
 					),
 				),
 			),
@@ -176,7 +168,7 @@ class ECMD_EventsLayouts extends ECMD_Builder_Module {
 					'type'    => 'DATETIME',
 				),
 			);
-
+            // phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_key, WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 			$ecmd_args['meta_key']   = $attribute['key'];
 			$ecmd_args['meta_query'] = $attribute['meta_date'];
 		}

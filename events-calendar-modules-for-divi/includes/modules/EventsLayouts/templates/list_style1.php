@@ -7,8 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	header( 'HTTP/1.1 403 Forbidden' );
 	exit();
 }
-
-
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $events_html .= '<div id="event-' . esc_attr( $event_id ) . '" class="ecmd-list-post ' . esc_attr( $layout_style ) . '">';
 if ( $show_date_highlight === 'on' ) {
 	$events_html .= '<div class="ecmd-date-highlight">';

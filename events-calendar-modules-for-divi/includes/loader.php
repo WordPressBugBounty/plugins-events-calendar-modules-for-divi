@@ -12,7 +12,7 @@ if (!class_exists('ET_Builder_Element')) {
 
 require_once plugin_dir_path(__FILE__) . 'modules/ModulesCore/ModulesCore.php';
 require_once plugin_dir_path(__FILE__) . 'modules/ModulesCore/ModulesHelper.php';
-
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $module_files = glob(__DIR__ . '/modules/*/*.php');
 
 // Sanitize and validate module files
@@ -26,7 +26,8 @@ foreach ($module_files as $module_file) {
         require_once $module_file;
     } else {
         if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-            error_log("Custom Divi module could not be loaded. File is not readable.");
+            // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+            error_log(esc_html__('Custom Divi module could not be loaded. File is not readable.', 'events-calendar-modules-for-divi'));
         }
     }
 }
