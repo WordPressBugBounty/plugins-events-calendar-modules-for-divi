@@ -3,7 +3,7 @@
 Plugin Name: Events Calendar Modules For Divi
 Plugin URI:  https://eventscalendaraddons.com/divi/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=demo&utm_content=top_view_demo
 Description: A divi module to show your events in beautiful designs
-Version:     1.1.6
+Version:     1.1.7
 Author:      Cool Plugins
 Author URI:  https://coolplugins.net/?utm_source=ecmd_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=plugins_list
 License:     GPL2
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ECMD_V', '1.1.6' );
+define( 'ECMD_V', '1.1.7' );
 define( 'ECMD_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ECMD_URL', plugin_dir_url( __FILE__ ) );
 define( 'ECMD_MODULE_URL', plugin_dir_url( __FILE__ ) . 'includes/modules' );
@@ -117,7 +117,7 @@ class ECMD_Events_Calendar_Modules_For_Divi {
 	public static function includes() {
 		require_once ECMD_MODULE_DIR . '/assets-loader.php';
 		new ECMD_AssetsLoader();
-		if ( wp_get_theme()->get( 'Version' ) >= 5 ) {
+		if(wp_get_theme('Divi')->get('Version') >= 5){
 			require_once ECMD_DIR . 'divi-5/divi-5.php';
 			new ECMD_AssetsLoader_divi_5();
 		} 

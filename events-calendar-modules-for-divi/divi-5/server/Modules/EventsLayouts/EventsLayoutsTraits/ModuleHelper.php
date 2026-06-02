@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ECMD\Modules\EventsLayouts\EventsLayoutsTraits;
 
 if (! defined('ABSPATH')) {
@@ -15,14 +17,92 @@ class ModuleHelper
      * @param string $key     The key to retrieve the value for.
      * @param mixed  $default The default value to return if the key does not exist.
      *
-     * @return string|null The attribute value or the default value if not found.
+     * @return string|string[]|null The attribute value or the default value if not found.
      */
     public static function get_attr_value($attrs, $key, $default = null)
     {
-        $value = !empty($attrs[$key]['desktop']['value'][$key]) ? $attrs[$key]['desktop']['value'][$key] : $default;
+        $value = ! empty( $attrs[ $key ]['desktop']['value'][ $key ] )
+            ? $attrs[ $key ]['desktop']['value'][ $key ]
+            : $default;
 
-        // Check if the value is an array, return it directly, otherwise, sanitize as a string
-        return is_array($value) ? array_map('esc_html', $value) : esc_html($value);
+        if ( is_array( $value ) ) {
+            // Divi 5 upload/image fields return an object (id, url, …), not a string URL.
+            if ( 'default_image' === $key || isset( $value['url'] ) || isset( $value['id'] ) || isset( $value['src'] ) ) {
+                return self::ecmd_resolve_image_url( $value, is_string( $default ) ? $default : '' );
+            }
+
+            return array_map( 'esc_html', $value );
+        }
+
+        return esc_html( $value );
+    }
+
+    public static function ecmd_resolve_image_url( $value, $default = '' ) {
+        return self::ecmd_resolve_image_url_recursive( $value, $default, 0 );
+    }
+    /**
+     * Normalize Divi 5 image upload values to a URL string.
+     *
+     * @param mixed  $value   Image attribute (string URL or Divi upload array).
+     * @param string $default Fallback URL.
+     * @return string
+     */
+    private static function ecmd_resolve_image_url_recursive( $value, $default = '', $depth = 0 ) {
+
+        // Prevent excessive recursion.
+        if ( $depth > 3 ) {
+            return is_string( $default ) ? $default : '';
+        }
+    
+        $fallback = is_string( $default ) ? $default : '';
+    
+        if ( empty( $value ) ) {
+            return $fallback;
+        }
+
+        if ( is_string( $value ) ) {
+            $url = esc_url_raw( $value );
+            return $url ? $url : $fallback;
+        }
+
+        if ( ! is_array( $value ) ) {
+            return $fallback;
+        }
+
+        if ( ! empty( $value['url'] ) && is_string( $value['url'] ) ) {
+            $url = esc_url_raw( $value['url'] );
+            return $url ? $url : $fallback;
+        }
+
+        if ( ! empty( $value['src'] ) && is_string( $value['src'] ) ) {
+            $url = esc_url_raw( $value['src'] );
+            return $url ? $url : $fallback;
+        }
+
+        if ( ! empty( $value['id'] ) ) {
+            $attachment_url = wp_get_attachment_image_url( (int) $value['id'], 'full' );
+            if ( $attachment_url ) {
+                return esc_url_raw( $attachment_url );
+            }
+        }
+
+        // Nested shape: [ 'default_image' => [ 'url' => … ] ].
+        foreach ( $value as $nested ) {
+            if ( is_array( $nested ) || is_string( $nested ) ) {
+    
+                $resolved = self::ecmd_resolve_image_url(
+                    $nested,
+                    '',
+                    $depth + 1
+                );
+    
+                if ( $resolved ) {
+                    return $resolved;
+                }
+            }
+        }
+
+        return $fallback;
     }
 
 
@@ -355,15 +435,17 @@ class ModuleHelper
 
     public static function ecmd_get_event_image($event_id, $size, $default_image = null)
     {
-        // $default_img  = ECT_PRO_PLUGIN_URL . 'assets/images/event-template-bg.png';
-        $ev_post_img  = '';
-        $feat_img_url = wp_get_attachment_image_src(get_post_thumbnail_id($event_id), $size);
-        if (! empty($feat_img_url) && $feat_img_url[0] != false) {
-            $ev_post_img = $feat_img_url[0];
-        } else {
-            $ev_post_img = $default_image;
+        $default_url = self::ecmd_resolve_image_url(
+            $default_image,
+            ECMD_URL . 'assets/images/event-template-bg.png'
+        );
+
+        $feat_img_url = wp_get_attachment_image_src( get_post_thumbnail_id( $event_id ), $size );
+        if ( ! empty( $feat_img_url ) && ! empty( $feat_img_url[0] ) ) {
+            return esc_url( $feat_img_url[0] );
         }
-        return esc_url($ev_post_img);
+
+        return esc_url( $default_url );
     }
 
 
@@ -391,7 +473,7 @@ class ModuleHelper
         $events_more_info_text = isset($args['find_out_more_text']) ? $args['find_out_more_text'] : 'Find Out More';
         $show_venue = isset($args['show_venue']) ? $args['show_venue'] : 'on';
         $show_description = isset($args['show_description']) ? $args['show_description'] : 'off';
-        $default_image = isset($args['default_image']) ? $args['default_image'] : 'default';
+        $default_image = isset( $args['default_image'] ) ? $args['default_image'] : ECMD_URL . 'assets/images/event-template-bg.png';
         $show_date_highlight = isset($args['show_date_highlight']) ? $args['show_date_highlight'] : 'off';
         $date_highlight_format = isset($args['date_highlight_format']) ? $args['date_highlight_format'] : 'DM';
         $show_event_image = isset($args['show_event_image']) ? $args['show_event_image'] : 'on';

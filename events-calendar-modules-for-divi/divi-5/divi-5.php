@@ -22,6 +22,13 @@ class ECMD_AssetsLoader_divi_5
 	{
 		if (et_core_is_fb_enabled() && et_builder_d5_enabled()) {
 			wp_enqueue_script('ecmd-divi5-visual-builder-script', ECMD_URL . 'divi-5/visual-builder/build/ecmd-events-calendar-modules-for-divi.js', array('react', 'jquery-core', 'divi-module-library', 'wp-hooks', 'divi-rest'), ECMD_V, true);
+			wp_localize_script(
+				'ecmd-divi5-visual-builder-script',
+				'ecmd_data',
+				array(
+					'default_image_url' => esc_url( ECMD_URL . 'assets/images/event-template-bg.png' ),
+				)
+			);
 		}
 	}
 
