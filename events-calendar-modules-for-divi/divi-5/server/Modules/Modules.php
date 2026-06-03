@@ -15,7 +15,7 @@ if (! defined('ABSPATH')) {
 use ECMD\Modules\EventsLayouts\EventsLayouts;
 
 add_action(
-  'init',
+  'rest_api_init',
   function () {
     $restApi = new RESTRegistration();
     $restApi->register_routes();

@@ -5,7 +5,7 @@ Tags: the events calendar, event calendar, events, divi theme, divi module
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.2
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -144,6 +144,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 5. Events List Module Settings
 
 == Changelog ==
+
+= 1.1.8 | 03 Jun 2026 =
+* Fixed: Rest Route issue with latest version of Divi.
 
 = 1.1.7 | 02 Jun 2026 =
 * Fixed: Default image display issue.

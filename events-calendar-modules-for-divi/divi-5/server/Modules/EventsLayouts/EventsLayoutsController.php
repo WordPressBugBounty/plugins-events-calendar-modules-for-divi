@@ -12,7 +12,6 @@ if (! defined('ABSPATH')) {
     die('Direct access forbidden.');
 }
 
-use ET\Builder\Framework\Controllers\RESTController;
 use ECMD\Modules\EventsLayouts\EventsLayoutsTraits\ModuleHelper;
 use WP_REST_Request;
 use WP_REST_Response;
@@ -22,7 +21,7 @@ use WP_REST_Response;
  *
  * @package ECMD\Modules\EventsLayouts
  */
-class EventsLayoutsController extends RESTController
+class EventsLayoutsController
 {
 
     /**
@@ -55,30 +54,30 @@ class EventsLayoutsController extends RESTController
     {
         return [
             'posts_per_page' => [
-                'type'              => 'number',
+                'type'              => 'integer',
                 'required'          => true,
                 'sanitize_callback' => function ($number) {
                     return intval($number);
                 },
-                'validate_callback' => 'esc_html',
+                'validate_callback' => 'rest_validate_request_arg',
             ],
             'order' => [
                 'type'              => 'string',
                 'required'          => true,
                 'sanitize_callback' => 'sanitize_text_field',
-                'validate_callback' => 'esc_html',
+                'validate_callback' => 'rest_validate_request_arg',
             ],
             'time' => [
                 'type'              => 'string',
                 'required'          => true,
                 'sanitize_callback' => 'sanitize_text_field',
-                'validate_callback' => 'esc_html',
+                'validate_callback' => 'rest_validate_request_arg',
             ],
             'featured_events' => [
                 'type'              => 'string',
                 'required'          => true,
                 'sanitize_callback' => 'sanitize_text_field',
-                'validate_callback' => 'esc_html',
+                'validate_callback' => 'rest_validate_request_arg',
             ]
         ];
     }
