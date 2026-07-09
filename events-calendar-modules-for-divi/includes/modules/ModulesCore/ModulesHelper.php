@@ -54,7 +54,7 @@ class ECMD_ModulesHelper extends ECMD_Builder_Module
 				$render_slug,
 				array(
 					'selector'    => '%%order_class%% .ecmd-list-post',
-					'declaration' => sprintf('background-color: %1$s;', esc_attr($ecmd_layout_background_color)),
+					'declaration' => sprintf('background-color: %1$s;', sanitize_hex_color($ecmd_layout_background_color)),
 				),
 			);
 		}
@@ -63,7 +63,7 @@ class ECMD_ModulesHelper extends ECMD_Builder_Module
 				$render_slug,
 				array(
 					'selector'    => '%%order_class%% .ecmd-list-post.style2:hover',
-					'declaration' => sprintf('background-color: %1$s !important ;', esc_attr($ecmd_layout_background_color__hover)),
+					'declaration' => sprintf('background-color: %1$s !important ;', sanitize_hex_color($ecmd_layout_background_color__hover)),
 				),
 			);
 		}
@@ -72,7 +72,7 @@ class ECMD_ModulesHelper extends ECMD_Builder_Module
 				$render_slug,
 				array(
 					'selector'    => '%%order_class%% .ecmd-list-venue , %%order_class%% .ecmd-google a, %%order_class%% .ecmd-list-venue a',
-					'declaration' => sprintf('color: %1$s !important ;', esc_attr($ecmd_list_venue_text_color)),
+					'declaration' => sprintf('color: %1$s !important ;', sanitize_hex_color($ecmd_list_venue_text_color)),
 				),
 			);
 		}
@@ -82,7 +82,7 @@ class ECMD_ModulesHelper extends ECMD_Builder_Module
 				$render_slug,
 				array(
 					'selector'    => '%%order_class%% .ecmd-event-readmore',
-					'declaration' => sprintf('--ecmd-readmore-bg-color: %1$s;', esc_attr($ecmd_find_more_backgroud_color)),
+					'declaration' => sprintf('--ecmd-readmore-bg-color: %1$s;', sanitize_hex_color($ecmd_find_more_backgroud_color)),
 				),
 			);
 		}
@@ -100,7 +100,7 @@ class ECMD_ModulesHelper extends ECMD_Builder_Module
 				$render_slug,
 				array(
 					'selector'    => '%%order_class%% .ecmd-event-readmore',
-					'declaration' => sprintf('--ecmd-find-more-border-color: %1$s;', esc_attr($ecmd_find_more_border_color)),
+					'declaration' => sprintf('--ecmd-find-more-border-color: %1$s;', sanitize_hex_color($ecmd_find_more_border_color)),
 				),
 			);
 		}
@@ -147,7 +147,7 @@ class ECMD_ModulesHelper extends ECMD_Builder_Module
 					$render_slug,
 					array(
 						'selector'    => '%%order_class%% .ecmd-category ul li',
-						'declaration' => sprintf( '--ecmd-bg-color: %1$s;', esc_attr( $bg_color ) ),
+						'declaration' => sprintf( '--ecmd-bg-color: %1$s;', sanitize_hex_color( $bg_color ) ),
 					),
 				);
 			}
@@ -159,7 +159,7 @@ class ECMD_ModulesHelper extends ECMD_Builder_Module
 					$render_slug,
 					array(
 						'selector'    => '%%order_class%% .ecmd-category ul li',
-						'declaration' => sprintf( '--ecmd-text-color: %1$s;', esc_attr( $text_color ) ),
+						'declaration' => sprintf( '--ecmd-text-color: %1$s;', sanitize_hex_color( $text_color ) ),
 					),
 				);
 			}
@@ -190,7 +190,7 @@ class ECMD_ModulesHelper extends ECMD_Builder_Module
 					$render_slug,
 					array(
 						'selector'    => '%%order_class%% .ecmd-date-highlight',
-						'declaration' => sprintf( '--ecmd-bg-color: %1$s;', esc_attr( $date_bg ) ),
+						'declaration' => sprintf( '--ecmd-bg-color: %1$s;', sanitize_hex_color( $date_bg ) ),
 					),
 				);
 			}
@@ -202,7 +202,7 @@ class ECMD_ModulesHelper extends ECMD_Builder_Module
 					$render_slug,
 					array(
 						'selector'    => '%%order_class%% .ecmd-date-highlight',
-						'declaration' => sprintf( '--ecmd-text-color: %1$s;', esc_attr( $date_color ) ),
+						'declaration' => sprintf( '--ecmd-text-color: %1$s;', sanitize_hex_color( $date_color ) ),
 					),
 				);
 			}
@@ -214,7 +214,7 @@ class ECMD_ModulesHelper extends ECMD_Builder_Module
 					$render_slug,
 					array(
 						'selector'    => '%%order_class%% .ecmd-list-post.style2 .ecmd-readmore-cost .ecmd-rate-area',
-						'declaration' => sprintf( '--ecmd-cost-color: %1$s;', esc_attr( $cost_color ) ),
+						'declaration' => sprintf( '--ecmd-cost-color: %1$s;', sanitize_hex_color( $cost_color ) ),
 					),
 				);
 			}
@@ -247,44 +247,44 @@ class ECMD_ModulesHelper extends ECMD_Builder_Module
 		$event_schedule = '';
 		$ev_time        = self::ecmd_tribe_event_time($event_id, false);
 		if ($date_format == 'DM') {
-			$event_schedule = '<div class="ecmd-date-area ' . $template . '-schedule"  >
+			$event_schedule = '<div class="ecmd-date-area ' . esc_attr($template) . '-schedule"  >
 							<span class="ev-day">' . esc_html(tribe_get_start_date($event_id, false, 'd')) . '</span>
 							<span class="ev-mo">' . esc_html(tribe_get_start_date($event_id, false, 'M')) . '</span>
 							</div>';
 		} elseif ($date_format == 'MD') {
-			$event_schedule = '<div class="ecmd-date-area ' . $template . '-schedule"  >
+			$event_schedule = '<div class="ecmd-date-area ' . esc_attr($template) . '-schedule"  >
 							
 							<span class="ev-mo">' . esc_html(tribe_get_start_date($event_id, false, 'M')) . '</span>
 							<span class="ev-day">' . esc_html(tribe_get_start_date($event_id, false, 'd')) . '</span>
 							</div>';
 		} elseif ($date_format == 'FD') {
-			$event_schedule = '<div class="ecmd-date-area ' . $template . '-schedule"  >
+			$event_schedule = '<div class="ecmd-date-area ' . esc_attr($template) . '-schedule"  >
 							
 							<span class="ev-mo">' . esc_html(tribe_get_start_date($event_id, false, 'F')) . '</span>
 							<span class="ev-day">' . esc_html(tribe_get_start_date($event_id, false, 'd')) . '</span>
 							</div>';
 		} elseif ($date_format == 'DF') {
-			$event_schedule = '<div class="ecmd-date-area ' . $template . '-schedule"  >
+			$event_schedule = '<div class="ecmd-date-area ' . esc_attr($template) . '-schedule"  >
 							
 							<span class="ev-day">' . esc_html(tribe_get_start_date($event_id, false, 'd')) . '</span>
 							<span class="ev-mo">' . esc_html(tribe_get_start_date($event_id, false, 'F')) . '</span>
 							</div>';
 		} elseif ($date_format == 'FD,Y') {
-			$event_schedule = '<div class="ecmd-date-area ' . $template . '-schedule"  >
+			$event_schedule = '<div class="ecmd-date-area ' . esc_attr($template) . '-schedule"  >
 							
 							<span class="ev-mo">' . esc_html(tribe_get_start_date($event_id, false, 'F')) . '</span>
 							<span class="ev-day">' . esc_html(tribe_get_start_date($event_id, false, 'd')) . ', </span>
 							<span class="ev-yr">' . esc_html(tribe_get_start_date($event_id, false, 'Y')) . '</span>
 							</div>';
 		} elseif ($date_format == 'MDY') {
-			$event_schedule = '<div class="ecmd-date-area ' . $template . '-schedule"  >
+			$event_schedule = '<div class="ecmd-date-area ' . esc_attr($template) . '-schedule"  >
 							
 							<span class="ev-mo">' . esc_html(tribe_get_start_date($event_id, false, 'M')) . '</span>
 							<span class="ev-day">' . esc_html(tribe_get_start_date($event_id, false, 'd')) . '</span>
 							<span class="ev-yr">' . esc_html(tribe_get_start_date($event_id, false, 'Y')) . '</span>
 							</div>';
 		} elseif ($date_format == 'MD,YT') {
-			$event_schedule = '<div class="ecmd-date-area ' . $template . '-schedule" >
+			$event_schedule = '<div class="ecmd-date-area ' . esc_attr($template) . '-schedule" >
 							
 							<span class="ev-mo">' . esc_html(tribe_get_start_date($event_id, false, 'M')) . '</span>
 							<span class="ev-day">' . esc_html(tribe_get_start_date($event_id, false, 'd')) . ', </span>
@@ -292,14 +292,14 @@ class ECMD_ModulesHelper extends ECMD_Builder_Module
 							<span class="ev-time"><span class="ecmd-icon"> <i class="ecmd-icons-clock" aria-hidden="true"></i></span> ' . $ev_time . '</span>
 							</div>';
 		} elseif ($date_format == 'DML') {
-			$event_schedule = '<div class="ecmd-date-area ' . $template . '-schedule" >
+			$event_schedule = '<div class="ecmd-date-area ' . esc_attr($template) . '-schedule" >
 							
 							<span class="ev-day">' . esc_html(tribe_get_start_date($event_id, false, 'd')) . '</span>
 							<span class="ev-mo">' . esc_html(tribe_get_start_date($event_id, false, 'M')) . '</span>
 							<span class="ev-weekday">' . esc_html(tribe_get_start_date($event_id, false, 'l')) . '</span>
 							</div>';
 		} elseif ($date_format == 'jMl') {
-			$event_schedule = '<div class="ecmd-date-area ' . $template . '-schedule" >
+			$event_schedule = '<div class="ecmd-date-area ' . esc_attr($template) . '-schedule" >
 							
 							<span class="ev-day">' . esc_html(tribe_get_start_date($event_id, false, 'j')) . '</span>
 							<span class="ev-mo">' . esc_html(tribe_get_start_date($event_id, false, 'M')) . '</span>
@@ -365,7 +365,7 @@ class ECMD_ModulesHelper extends ECMD_Builder_Module
 							<span class="ev-time"><span class="ecmd-icon"> <i class="ecmd-icons-clock" aria-hidden="true"></i></span> ' . $ev_time . '</span>
 							</div>';
 		} elseif ($date_format == 'D.j.F') {
-			$event_schedule = '<div class="ecmd-date-area ' . $template . '-schedule"  >
+			$event_schedule = '<div class="ecmd-date-area ' . esc_attr($template) . '-schedule"  >
 						<span class="ev-weekday">' . esc_html(tribe_get_start_date($event_id, false, 'D')) . '.,</span>
 						<span class="ev-day">' . esc_html(tribe_get_start_date($event_id, false, 'j')) . '.</span>
 						<span class="ev-mo">' . esc_html(tribe_get_start_date($event_id, false, 'F')) . '</span>

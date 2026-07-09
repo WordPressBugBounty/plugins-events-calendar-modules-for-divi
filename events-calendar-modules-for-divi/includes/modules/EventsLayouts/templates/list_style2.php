@@ -20,7 +20,6 @@ $event_type = tribe( 'tec.featured_events' )->is_featured( $event_id ) ? sanitiz
 // Start generating the main HTML for the event list.
 $events_html      .= '<div id="event-' . esc_attr( $event_id ) . '" class="ecmd-list-post ' . esc_attr( $event_type ) . ' ' . esc_attr( $layout_style ) . '">';
 $event_single_link = esc_url( tribe_get_event_link( $event_id ) );
-$event_title_att   = get_the_title( $event_id );
 $no_image_cls      = '';
 
 // Add event image if enabled.
@@ -80,7 +79,7 @@ if ( $show_venue === 'on' ) {
 // Add "find out more" link and cost.
 $events_html .= '<div class="ecmd-readmore-cost">';
 				if ( $show_find_out_more === 'on' ) {
-					$events_html .= '	<a href="' . esc_url( tribe_get_event_link( $event_id ) ) . '" class="ecmd-events-readmore" rel="bookmark"><span class="ecmd-event-readmore">' . esc_html( $events_more_info_text, 'events-calendar-modules-for-divi' ) . '</span></a>';
+					$events_html .= '	<a href="' . esc_url( tribe_get_event_link( $event_id ) ) . '" class="ecmd-events-readmore" rel="bookmark"><span class="ecmd-event-readmore">' . esc_html( $events_more_info_text ) . '</span></a>';
 				}
 				if ( $show_cost === 'on' ) {
 					if ( tribe_get_cost( $event_id ) ) {

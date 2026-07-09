@@ -3,7 +3,7 @@
 Plugin Name: Events Calendar Modules For Divi
 Plugin URI:  https://eventscalendaraddons.com/divi/?utm_source=ecmd_plugin&utm_medium=readme&utm_campaign=demo&utm_content=top_view_demo
 Description: A divi module to show your events in beautiful designs
-Version:     1.1.8
+Version:     1.1.9
 Author:      Cool Plugins
 Author URI:  https://coolplugins.net/?utm_source=ecmd_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=plugins_list
 License:     GPL2
@@ -17,13 +17,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ECMD_V', '1.1.8' );
+define( 'ECMD_V', '1.1.9' );
 define( 'ECMD_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ECMD_URL', plugin_dir_url( __FILE__ ) );
+define( 'ECMD_PLUGIN_FILE', __FILE__ );
 define( 'ECMD_MODULE_URL', plugin_dir_url( __FILE__ ) . 'includes/modules' );
 define( 'ECMD_MODULE_DIR', plugin_dir_path( __FILE__ ) . 'includes/modules' );
 define('ECMD_FEEDBACK_API',"https://feedback.coolplugins.net/");
 
+register_activation_hook( ECMD_PLUGIN_FILE, array( 'ECMD_Events_Calendar_Modules_For_Divi', 'ecmd_activate' ) );
 class ECMD_Events_Calendar_Modules_For_Divi {
 
 	public function __construct() {
@@ -42,7 +44,6 @@ class ECMD_Events_Calendar_Modules_For_Divi {
 		self::includes();
 		add_action( 'divi_extensions_init', array( $this, 'ecmd_initialize_extension' ) );
 		add_action( 'admin_init', array( $this, 'ecmd_is_divi_theme_exist' ) );
-		register_activation_hook( __FILE__, array( 'ECMD_Events_Calendar_Modules_For_Divi', 'ecmd_activate' ) );
 	}
 
 	public function ecmd_is_pro_plugin_active() {

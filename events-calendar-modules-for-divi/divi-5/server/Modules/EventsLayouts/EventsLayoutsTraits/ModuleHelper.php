@@ -608,37 +608,50 @@ class ModuleHelper
                 $event_single_link = esc_url(tribe_get_event_link($event_id));
                 $event_title_att   = get_the_title($event_id);
                 $no_image_cls      = '';
+                $valid_css_size    = '/^\d+(?:\.\d+)?(?:px|em|rem|%)$/i';
+
+                $allowed_border_styles = array(
+                    'none',
+                    'solid',
+                    'dashed',
+                    'dotted',
+                    'double',
+                    'groove',
+                    'ridge',
+                    'inset',
+                    'outset',
+                );
 
                 if(isset($args['unknownAttributes'])) {
                 $events_html .= '<style>';
                 if($category_text_color !== '') {
                 $events_html .= '.ecmd-category a {
-                    --ecmd-text-color: ' . $category_text_color . ';
+                    --ecmd-text-color: ' . sanitize_hex_color($category_text_color) . ';
                 }';
                 }
                 if($cost_text_color !== '' || $cost_font_size !== '') {
                 $events_html .= '.ecmd-rate-area {';
                 if($cost_text_color !== '') {
-                    $events_html .= '--ecmd-cost-color: ' . $cost_text_color . ';';
+                    $events_html .= '--ecmd-cost-color: ' . sanitize_hex_color($cost_text_color) . ';';
                 }
-                if($cost_font_size !== '') {
-                    $events_html .= '--ecmd-cost-size: ' . $cost_font_size . ';';
+                if($cost_font_size !== '' && preg_match($valid_css_size, $cost_font_size)) {
+                    $events_html .= '--ecmd-cost-size: ' . esc_attr($cost_font_size) . ';';
                 }
                 $events_html .= '}';
                 }
                 if($find_more_border_color !== '' || $find_more_border_width !== '' || $find_more_border_style !== '' || $find_more_border_radius !== '') {
                 $events_html .= '.ecmd-events-readmore {';
                     if($find_more_border_color !== '') {
-                    $events_html .= '--ecmd-find-more-border-color: ' . $find_more_border_color . ';';
+                    $events_html .= '--ecmd-find-more-border-color: ' . sanitize_hex_color($find_more_border_color) . ';';
                     }
-                    if($find_more_border_width !== '') {
-                    $events_html .= '--ecmd-find-more-border-width: ' . $find_more_border_width . ';';
+                    if($find_more_border_width !== '' && preg_match( $valid_css_size, $find_more_border_width ) ) {
+                    $events_html .= '--ecmd-find-more-border-width: ' . esc_attr($find_more_border_width) . ';';
                     }
-                    if($find_more_border_style !== '') {
-                    $events_html .= '--ecmd-find-more-border-style: ' . $find_more_border_style . ';';
+                    if($find_more_border_style !== '' && in_array( strtolower( $find_more_border_style ), $allowed_border_styles, true )) {
+                    $events_html .= '--ecmd-find-more-border-style: ' . esc_attr( strtolower( $find_more_border_style ) ) . ';';
                     }
-                    if($find_more_border_radius !== '') {
-                    $events_html .= '--ecmd-find-more-border-radius: ' . $find_more_border_radius . ';';
+                    if($find_more_border_radius !== '' && preg_match( $valid_css_size, $find_more_border_radius ) ) {
+                    $events_html .= '--ecmd-find-more-border-radius: ' . esc_attr($find_more_border_radius) . ';';
                     }
                 }
                 $events_html .= '}';
@@ -701,7 +714,7 @@ class ModuleHelper
                 // Add "find out more" link and cost.
                 $events_html .= '<div class="ecmd-readmore-cost">';
                 if ($show_find_out_more === 'on') {
-                    $events_html .= '	<a href="' . esc_url(tribe_get_event_link($event_id)) . '" class="ecmd-events-readmore" rel="bookmark"><span class="ecmd-event-readmore">' . esc_html($events_more_info_text, 'events-calendar-modules-for-divi') . '</span></a>';
+                    $events_html .= '	<a href="' . esc_url(tribe_get_event_link($event_id)) . '" class="ecmd-events-readmore" rel="bookmark"><span class="ecmd-event-readmore">' . esc_html($events_more_info_text) . '</span></a>';
                 }
                 if ($show_cost === 'on') {
                     if (tribe_get_cost($event_id)) {
@@ -733,8 +746,8 @@ class ModuleHelper
                 // Add event data to the formatted array
                 $formatted_events[] = array(
                     'id'          => $event_id,
-                    'title'       => get_the_title($event_id),
-                    'description' => get_the_content(null, false, $event_id),
+                    'title'       => wp_kses_post(get_the_title($event_id)),
+                    'description' => wp_kses_post(get_the_content(null, false, $event_id)),
                     'all_day'     => tribe_event_is_all_day($event_id),
                     'start_date_details' => array(
                         'year'    => tribe_get_start_date($event_id, false, 'Y'),

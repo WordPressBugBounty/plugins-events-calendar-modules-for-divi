@@ -14,7 +14,14 @@
     ],
     "container_style": {
       "type": "object",
-      "selector": "{{selector}} .ecmd-list-post"
+      "selector": "{{selector}} .ecmd-list-post",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "#fff"
+          }
+        }
+      }
     },
     "title_style": {
       "type": "object",
@@ -77,6 +84,26 @@
             "value": {
               "posts_per_page": "6"
             }
+          }
+        }
+      }
+    },
+    "time": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "future"
+          }
+        }
+      }
+    },
+    "featured_events": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "off"
           }
         }
       }

@@ -220,7 +220,7 @@ if ( ! class_exists( 'CFE_Marketing' ) ) {
 			</div>
 			<?php
 		}
-
+        //phpcs:disable WordPress.Security.NonceVerification.Recommended
 		/**
 		 * Whether the current admin screen should display the CFE admin notice.
 		 *
@@ -292,8 +292,14 @@ if ( ! class_exists( 'CFE_Marketing' ) ) {
 			$context = isset( $_POST['context'] ) ? sanitize_text_field( wp_unslash( $_POST['context'] ) ) : '';
 
 			if ( 'admin' === $context ) {
+				if ( ! current_user_can( 'install_plugins' ) ) {
+					wp_send_json_error();
+				}
 				update_user_meta( $user_id, 'cfe_admin_notice_dismissed', 'yes' );
 			} elseif ( 'editor' === $context ) {
+				if ( ! current_user_can( 'edit_posts' ) ) {
+					wp_send_json_error();
+				}
 				update_user_meta( $user_id, 'cfe_editor_notice_dismissed', 'yes' );
 			} else {
 				// Fallback: update both for backward compatibility with old callers.
@@ -320,7 +326,7 @@ if ( ! class_exists( 'CFE_Marketing' ) ) {
 				)
 				LIMIT 1
 			", $like_shortcode, $like_block);
-		
+		   //phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			$result = $wpdb->get_var($sql);
 			return ! empty($result);
 		}
@@ -498,6 +504,15 @@ if ( ! class_exists( 'CFE_Marketing' ) ) {
 		 * Runs at priority 1 before wp_ajax_install_plugin; exits with error if slug is invalid.
 		 */
 		public function validate_plugin_install_slug() {
+			check_ajax_referer( 'updates' );
+			if ( ! current_user_can( 'install_plugins' ) ) {
+				wp_send_json_error(
+					array(
+						'message' => __( 'Permission denied.', 'events-calendar-modules-for-divi' ),
+					),
+					403
+				);
+			}
 			$slug = isset( $_REQUEST['slug'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['slug'] ) ) : '';
 			if ( $slug !== self::TARGET_PLUGIN_SLUG ) {
 				wp_send_json_error( array( 'message' => __( 'Invalid plugin. Only Contact Form Extender for Divi can be installed from here.', 'events-calendar-modules-for-divi' ) ) );
@@ -524,11 +539,25 @@ if ( ! class_exists( 'CFE_Marketing' ) ) {
 
 			include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-			$init_file = sanitize_text_field( wp_unslash( $_POST['init'] ) );
-			$activate  = activate_plugin( $init_file, '', false, true );
+			$init_file = plugin_basename( sanitize_text_field( wp_unslash( $_POST['init'] ) ) );
+			if ( $init_file !== self::TARGET_PLUGIN_INIT ) {
+				wp_send_json_error( array( 'message' => __( 'Invalid plugin.', 'events-calendar-modules-for-divi' ) ) );
+			}
+			$activate = activate_plugin( self::TARGET_PLUGIN_INIT, '', false, true );
 
 			if ( is_wp_error( $activate ) ) {
-				wp_send_json_error( array( 'message' => $activate->get_error_message() ) );
+				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+					error_log( // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+						'ECMD Plugin Activation Error: ' . wp_json_encode(
+							$activate->get_error_messages()
+						)
+					);
+				}
+				wp_send_json_error(
+					array(
+						'message' => __( 'Plugin activation failed. Please try again.', 'events-calendar-modules-for-divi' ),
+					)
+				);
 			}
 
 			wp_send_json_success( array( 'message' => __( 'Plugin activated successfully.', 'events-calendar-modules-for-divi' ) ) );

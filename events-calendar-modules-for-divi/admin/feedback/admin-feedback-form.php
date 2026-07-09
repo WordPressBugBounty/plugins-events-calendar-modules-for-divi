@@ -43,7 +43,47 @@ class ECMD_feedback {
 		}
 	}
 
-	public function ecmd_enqueue_scripts() {
+	/**
+	 * Whether the admin review notice should be shown (and its assets loaded).
+	 *
+	 * @return bool
+	 */
+	private function ecmd_should_show_review_notice() {
+		if ( ! current_user_can( 'update_plugins' ) ) {
+			return false;
+		}
+
+		$installation_date = get_option( esc_html( $this->installation_date_option ) );
+		if ( empty( $installation_date ) ) {
+			return false;
+		}
+
+		$already_rated = get_option( esc_html( $this->review_option ) );
+		if ( false !== $already_rated && 'yes' === $already_rated ) {
+			return false;
+		}
+
+		try {
+			$install_date = new DateTime( $installation_date );
+			$current_date = new DateTime( gmdate( 'Y-m-d h:i:s' ) );
+			$diff_days    = $install_date->diff( $current_date )->days;
+		} catch ( Exception $e ) {
+			return false;
+		}
+
+		return isset( $diff_days ) && $diff_days >= 3;
+	}
+
+	/**
+	 * Enqueue review-notice assets only when the notice can render.
+	 *
+	 * @param string $hook_suffix Current admin screen hook suffix.
+	 */
+	public function ecmd_enqueue_scripts( $hook_suffix ) {
+		if ( ! $this->ecmd_should_show_review_notice() ) {
+			return;
+		}
+
 		wp_enqueue_script( 'ecmd-admin-feedback-form', esc_url( $this->plugin_url ) . 'admin/feedback/js/admin-feedback-form.js', array( 'jquery' ), esc_html( $this->plugin_version ) , true );
 		wp_localize_script( 'ecmd-admin-feedback-form', 'ecmd_admin_feedback_form', array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
@@ -53,36 +93,20 @@ class ECMD_feedback {
 	}
 
 	public function ecmd_dismiss_review_notice() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( 'Forbidden', 403 );
+		}
         check_ajax_referer( 'ecmd_dismiss_notice_nonce', 'security' );
         update_option( esc_html( $this->review_option ), 'yes' );
         wp_send_json_success();
     }
 
 	public function ecmd_admin_notice_for_review(){
-		if ( ! current_user_can( 'update_plugins' ) ) {
+		if ( ! $this->ecmd_should_show_review_notice() ) {
 			return;
 		}
 
-		// get installation dates and rated settings
-		$installation_date = get_option( esc_html( $this->installation_date_option ) );
-		$alreadyRated      = get_option( esc_html( $this->review_option ) ) != false ? get_option( esc_html( $this->review_option ) ) : 'no';
-
-		// check user already rated
-		if ( $alreadyRated == 'yes' ) {
-			return;
-		}
-
-		// grab plugin installation date and compare it with current date
-		$display_date = gmdate( 'Y-m-d h:i:s' );
-		$install_date = new DateTime( $installation_date );
-		$current_date = new DateTime( $display_date );
-		$difference   = $install_date->diff( $current_date );
-		$diff_days    = $difference->days;
-
-		// check if installation days is greator then week
-		if ( isset( $diff_days ) && $diff_days >= 3 ) {
-			echo wp_kses_post( $this->ecmd_create_notice_content() );
-		}
+		echo wp_kses_post( $this->ecmd_create_notice_content() );
 	}
 
 	function ecmd_create_notice_content() {
@@ -195,7 +219,8 @@ class ECMD_feedback {
 		$server_info = [
 			// phpcs:disable WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.DB.DirectDatabaseQuery.DirectQuery, 	WordPress.DB.DirectDatabaseQuery.NoCaching
 			'server_software'        => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field($_SERVER['SERVER_SOFTWARE']) : 'N/A',
-			'mysql_version'          => $wpdb ? sanitize_text_field($wpdb->get_var("SELECT VERSION()")) : 'N/A',
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			'mysql_version'          => isset( $wpdb ) ? sanitize_text_field( $wpdb->db_version() ) : 'N/A',
 			'php_version'            => sanitize_text_field(phpversion() ?: 'N/A'),
 			'wp_version'             => sanitize_text_field(get_bloginfo('version') ?: 'N/A'),
 			'wp_debug'               => (defined('WP_DEBUG') && WP_DEBUG) ? 'Enabled' : 'Disabled',
@@ -249,11 +274,11 @@ class ECMD_feedback {
 
 
 	function submit_deactivation_response() {
-		// phpcs:disable WordPress.Security.ValidatedSanitizedInput.MissingUnslash
-		if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_POST['_wpnonce'] ), '_cool-plugins_deactivate_feedback_nonce' ) ) {
-			wp_send_json_error();
-		} else {
-			$reason             = isset( $_POST['reason'] ) ? sanitize_text_field( $_POST['reason'] ) : '';
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			wp_send_json_error( 'Unauthorized' );
+		}
+		check_ajax_referer( '_cool-plugins_deactivate_feedback_nonce' );
+			$reason             = isset( $_POST['reason'] ) ? sanitize_text_field( wp_unslash($_POST['reason']) ) : '';
 			$deactivate_reasons = array(
 				'didnt_work_as_expected'         => array(
 					'title'             => __( 'The plugin didn\'t work as expected', 'events-calendar-modules-for-divi' ),
@@ -278,28 +303,28 @@ class ECMD_feedback {
 			);
 
 			$plugin_initial =  get_option( 'ecmd_initial_save_version' );
-			$deativation_reason = array_key_exists( $reason, $deactivate_reasons ) ? $reason : 'other';
-
-			$deativation_reason = esc_html($deativation_reason);
-			$sanitized_message = empty( sanitize_text_field( wp_unslash($_POST['message']) ) ) || sanitize_text_field( wp_unslash($_POST['message']) ) == '' ? 'N/A' : sanitize_text_field( wp_unslash($_POST['message']) );
+			$deactivation_reason = array_key_exists( $reason, $deactivate_reasons ) ? $reason : 'other';
+			$message = isset( $_POST['message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['message'] ) ) : '';
+			$sanitized_message = '' === trim( $message ) ? 'N/A' : $message;
 			$admin_email       = sanitize_email( get_option( 'admin_email' ) );
-			$site_url          = esc_url( site_url() );
+			$site_url          = esc_url_raw( site_url() );
 			$install_date 		= get_option('ecmd_install_date');
 			$unique_key     	= '54'; 
 			$site_id        	= $site_url . '-' . $install_date . '-' . $unique_key;
 			$feedback_url      = esc_url( ECMD_FEEDBACK_API . 'wp-json/coolplugins-feedback/v1/feedback' );
+			$user_info         = $this->cpfm_get_user_info();
 			$response          = wp_remote_post(
 				$feedback_url,
 				array(
 					'timeout' => 30,
 					'sslverify' => true,
 					'body'    => array(
-						'server_info' => serialize($this->cpfm_get_user_info()['server_info']), 
-						'extra_details' => serialize($this->cpfm_get_user_info()['extra_details']),
-						'plugin_initial'  => isset($plugin_initial) ? sanitize_text_field($plugin_initial) : 'N/A',
+						'server_info'    => wp_json_encode($user_info['server_info']), 
+						'extra_details'  => wp_json_encode($user_info['extra_details']),
+						'plugin_initial' => isset($plugin_initial) ? sanitize_text_field($plugin_initial) : 'N/A',
 						'plugin_version' => esc_html( $this->plugin_version ),
 						'plugin_name'    => esc_html( $this->plugin_name ),
-						'reason'         => sanitize_text_field($deativation_reason),
+						'reason'         => sanitize_text_field($deactivation_reason),
 						'review'         => sanitize_text_field($sanitized_message),
 						'email'          => sanitize_email($admin_email),
 						'domain'         => sanitize_text_field($site_url),
@@ -308,9 +333,11 @@ class ECMD_feedback {
 				)
 			);
 
-			die( json_encode( array( 'response' => $response ) ) );
-		}
+			if ( is_wp_error( $response ) ) {
+				wp_send_json_error( 'Feedback submission failed' );
+			}
 
+			wp_send_json_success( 'Feedback submitted successfully' );
 	}
 }
 new ECMD_feedback();
