@@ -22,6 +22,7 @@ class ECMD_EventsLayouts extends ECMD_Builder_Module {
 	 */
 	public $vb_support = 'on';
 
+	public $icon_path;
 
 	/**
 	 * Initialize the module settings.

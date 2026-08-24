@@ -1,0 +1,1484 @@
+/* =========================================================================
+   idea-2 — Wizard shell, steps, options, footer, success state.
+   All wizard pages share this CSS. Per-page step content goes in the HTML.
+
+   NOTE: The Events Shortcodes & Blocks wizard uses the "v2 shell" defined
+   at the bottom of this file (search for "STEP-1 V2 SHELL"). That variant
+   replaces the admin-header + sticky-footer combo with a header-as-progress
+   bar + inline card nav pattern.
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   Step container
+   ------------------------------------------------------------------------- */
+
+.ecmd-wizard-step {
+  width: 100%;
+  max-width: 800px;
+  display: none;
+  animation: ecmdWizardFade 0.32s ease;
+}
+.ecmd-wizard-step.is-active { display: block; }
+
+@keyframes ecmdWizardFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* -------------------------------------------------------------------------
+   (v1 option grids, layout mocks, substeps, swatches, forms, review summary,
+   consent, upsell and sticky footer were removed — this wizard uses the v2
+   shell below.)
+   ------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------
+   Success state
+   ------------------------------------------------------------------------- */
+
+.ecmd-wizard-success {
+  text-align: center;
+  padding: 32px 24px;
+}
+
+.ecmd-wizard-success__icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  border-radius: 50%;
+  background: var(--ecmd-success-soft);
+  border: 2px solid var(--ecmd-success-border);
+  color: var(--ecmd-success);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ecmd-wizard-success__icon .dashicons {
+  width: 40px; height: 40px; font-size: 40px;
+}
+
+.ecmd-wizard-success__title {
+  margin: 0 0 12px;
+  font-size: clamp(26px, 4vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ecmd-text);
+}
+
+.ecmd-wizard-success__lede {
+  margin: 0 auto;
+  max-width: 500px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ecmd-text-muted);
+}
+
+.ecmd-wizard-success__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+/* =========================================================================
+   STEP-1 V2 SHELL — used by wizard-shortcodes-blocks.html
+   Header-as-progress-bar + card-with-inline-nav. Rem-based sizing.
+   ========================================================================= */
+
+.ecmd-wizard-shell {
+  min-height: 100vh;
+  background: var(--ecmd-bg);
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem; /* baseline: 1rem = 16px */
+}
+
+/* ----- Header (3-col: brand + steps + exit) ----- */
+
+.ecmd-wizard-header {
+  background: #fff;
+  border-bottom: 0.0625rem solid var(--ecmd-border-soft);
+  padding: 1rem 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+  min-height: 5rem;
+}
+
+.ecmd-wizard-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+.ecmd-wizard-header__brand-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 auto;
+  display: block;
+  object-fit: contain;
+}
+.ecmd-wizard-header__brand-name {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.15;
+}
+.ecmd-wizard-header__brand-name strong {
+  font-size: 0.9375rem;
+  font-weight: 650;
+  color: var(--ecmd-text);
+}
+.ecmd-wizard-header__brand-name em {
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ecmd-text-muted);
+  margin-top: 0.125rem;
+}
+
+.ecmd-wizard-header__steps {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-self: center;
+}
+
+.ecmd-wizard-header-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  min-width: 3.5rem;
+}
+.ecmd-wizard-header-step__num {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  border: 0.125rem solid var(--ecmd-border);
+  background: #fff;
+  color: var(--ecmd-text-soft);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  position: relative;
+}
+.ecmd-wizard-header-step__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ecmd-text-soft);
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.ecmd-wizard-header__connector {
+  width: 2.5rem;
+  height: 0.125rem;
+  background: var(--ecmd-border);
+  margin-top: 0.9375rem;
+  border-radius: 0.0625rem;
+  transition: background 0.2s;
+  flex: 0 0 auto;
+}
+
+.ecmd-wizard-header-step.is-done .ecmd-wizard-header-step__num {
+  background: var(--ecmd-accent);
+  border-color: var(--ecmd-accent);
+  color: transparent;
+  font-size: 0;
+}
+.ecmd-wizard-header-step.is-done .ecmd-wizard-header-step__num::before {
+  content: "\f147"; /* dashicons-yes */
+  font-family: dashicons;
+  font-size: 1.125rem;
+  color: #fff;
+}
+.ecmd-wizard-header-step.is-done .ecmd-wizard-header-step__label {
+  color: var(--ecmd-text);
+}
+.ecmd-wizard-header__connector.is-done {
+  background: var(--ecmd-accent);
+}
+.ecmd-wizard-header-step.is-current .ecmd-wizard-header-step__num {
+  border-color: var(--ecmd-accent);
+  color: var(--ecmd-accent);
+  background: #fff;
+}
+.ecmd-wizard-header-step.is-current .ecmd-wizard-header-step__label {
+  color: var(--ecmd-text);
+  font-weight: 700;
+}
+
+.ecmd-wizard-header__exit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  color: var(--ecmd-text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  justify-self: end;
+  transition: color 0.15s, background-color 0.15s;
+}
+.ecmd-wizard-header__exit:hover {
+  background: var(--ecmd-bg);
+  color: var(--ecmd-text);
+  text-decoration: none;
+}
+.ecmd-wizard-header__exit .dashicons {
+  width: 1rem;
+  height: 1rem;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* ----- Main + Card ----- */
+
+.ecmd-wizard-main {
+  flex: 1 1 auto;
+  padding: 2.5rem 1.5rem 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.ecmd-wizard-card {
+  background: #fff;
+  border: 0.0625rem solid var(--ecmd-border-soft);
+  border-radius: 1rem;
+  box-shadow: 0 0.25rem 1rem rgba(2, 14, 33, 0.05);
+  padding: 2rem 2.25rem;
+  width: 100%;
+  max-width: 68rem;
+}
+
+/* Reuse existing .ecmd-wizard-step as the step wrapper; the wizard JS
+   already toggles .is-active on it. Inside the card, we adjust its
+   padding/appearance for the new layout. */
+.ecmd-wizard-card .ecmd-wizard-step {
+  max-width: none;
+}
+
+.ecmd-wizard-card__heading {
+  margin-bottom: 1.75rem;
+}
+.ecmd-wizard-card__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ecmd-text);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.ecmd-wizard-card__desc {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ecmd-text-muted);
+  max-width: 54rem;
+}
+
+/* Inline nav row */
+.ecmd-wizard-card__nav {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 0.0625rem solid var(--ecmd-border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+/* Attention pulse — soft blue glow + expanding ring — on any primary CTA
+   in the wizard nav (Continue when enabled, or Install/Open in promo mode).
+   Draws the user's eye to the next action. Hover pauses it. */
+@keyframes wizardCtaPulse {
+  0%, 100% {
+    box-shadow:
+      0 0.125rem 0.375rem rgba(6, 147, 227, 0.4),
+      0 0 0 0 rgba(6, 147, 227, 0.55);
+  }
+  60% {
+    box-shadow:
+      0 0.125rem 0.375rem rgba(6, 147, 227, 0.4),
+      0 0 0 0.625rem rgba(6, 147, 227, 0);
+  }
+}
+.ecmd-wizard-card__nav .ecmd-btn-primary,
+.ecmd-wizard-success__actions .ecmd-btn-primary {
+  animation: wizardCtaPulse 2.2s ease-out infinite;
+}
+.ecmd-wizard-card__nav .ecmd-btn-primary:hover,
+.ecmd-wizard-card__nav .ecmd-btn-primary:focus,
+.ecmd-wizard-success__actions .ecmd-btn-primary:hover,
+.ecmd-wizard-success__actions .ecmd-btn-primary:focus {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ecmd-wizard-card__nav .ecmd-btn-primary,
+  .ecmd-wizard-success__actions .ecmd-btn-primary { animation: none; }
+}
+.ecmd-wizard-card__nav-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-left: auto;
+}
+.ecmd-wizard-card__nav [data-wizard-back] { visibility: hidden; }
+.ecmd-wizard-card__nav [data-wizard-back].is-visible { visibility: visible; }
+
+.ecmd-wizard-card__nav .ecmd-btn-ghost,
+.ecmd-wizard-card__nav .ecmd-btn-primary,
+.ecmd-wizard-card__nav .ecmd-btn-secondary {
+  min-height: 2.5rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9375rem;
+  border-radius: 0.5rem;
+}
+.ecmd-btn-ghost.is-busy,
+.ecmd-btn-primary.is-busy,
+.ecmd-btn-secondary.is-busy,
+.ecmd-btn-accent.is-busy,
+[data-step-primary-cta].is-busy,
+[data-ecmd-busy="1"] {
+  pointer-events: none;
+  opacity: 0.72;
+  cursor: progress;
+}
+
+@keyframes ecmd-spin {
+  to { transform: rotate(360deg); }
+}
+
+.ecmd-btn-ghost.is-busy .dashicons,
+.ecmd-btn-primary.is-busy .dashicons,
+.ecmd-btn-secondary.is-busy .dashicons,
+.ecmd-btn-accent.is-busy .dashicons,
+[data-ecmd-busy="1"] .dashicons,
+[data-step-primary-cta].is-busy .dashicons,
+[data-activate-pro].is-busy .dashicons {
+  animation: ecmd-spin 0.8s linear infinite;
+}
+.ecmd-wizard-card__nav .dashicons {
+  width: 1rem; height: 1rem; font-size: 1rem;
+}
+
+/* ----- Editor selector (2-col: options 45% + video 55%) ----- */
+
+.ecmd-editor-selector {
+  display: grid;
+  grid-template-columns: 55fr 45fr;   /* video left (wide), options right */
+  gap: 1.5rem;
+  align-items: start;   /* independent column heights — video stays at natural aspect-ratio */
+}
+/* Visually place the video on the left and the options on the right, while
+   keeping DOM order options-first so tab order + mobile stacking lead with the
+   decision (options above the video). */
+.ecmd-editor-selector__video   { grid-column: 1; grid-row: 1; }
+.ecmd-editor-selector__options { grid-column: 2; grid-row: 1; }
+
+.ecmd-editor-selector__options {
+  display: grid;
+  /* Widgets has only 2 options ever, so single-column stacked reads best
+     at every width (the shortcodes wizard used 2-col for 5 options). */
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  align-content: start;
+  align-self: center;
+}
+
+/* Using anchor tags — override anchor defaults so the option renders as a card.
+   Canonical small option select card: horizontal flex row, vertically center
+   aligned — icon + text on the left, radio-style check on the right edge. */
+.ecmd-editor-option {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 0.9375rem;
+  background: #fff;
+  border: 0.125rem solid var(--ecmd-border);
+  border-radius: 0.75rem;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.ecmd-editor-option:hover,
+.ecmd-editor-option:focus,
+.ecmd-editor-option:visited {
+  color: inherit;
+  text-decoration: none;
+}
+.ecmd-editor-option:hover {
+  border-color: var(--ecmd-primary-border);
+}
+.ecmd-editor-option:focus-visible {
+  outline: 0.125rem solid var(--ecmd-focus);
+  outline-offset: 0.125rem;
+}
+.ecmd-editor-option.is-selected {
+  border-color: var(--ecmd-primary);
+  background: var(--ecmd-primary-soft);
+  box-shadow: 0 0 0 0.125rem rgba(6, 147, 227, 0.15);
+}
+.ecmd-editor-option__icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 0.375rem;
+}
+/* Name + description wrapped in a column so the check indicator can sit to
+   the right of BOTH lines, vertically centered. */
+.ecmd-editor-option__text {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+.ecmd-editor-option__name {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 650;
+  color: var(--ecmd-text);
+  line-height: 1.25;
+}
+.ecmd-editor-option__sub {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--ecmd-text-muted);
+}
+
+/* Check indicator — ALWAYS visible on the right edge. Radio-button style:
+   hollow gray ring when unselected, filled brand-primary circle with a white
+   check when selected. The dashicon is always in the DOM; only opacity flips. */
+.ecmd-editor-option__check {
+  flex: 0 0 auto;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  border: 0.125rem solid var(--ecmd-border);
+  background: transparent;
+  color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+.ecmd-editor-option:hover .ecmd-editor-option__check {
+  border-color: var(--ecmd-primary-border);
+}
+.ecmd-editor-option.is-selected .ecmd-editor-option__check {
+  background: var(--ecmd-primary);
+  border-color: var(--ecmd-primary);
+  color: #fff;
+}
+.ecmd-editor-option__check .dashicons {
+  width: 0.8125rem; height: 0.8125rem; font-size: 0.8125rem; line-height: 1;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.ecmd-editor-option.is-selected .ecmd-editor-option__check .dashicons {
+  opacity: 1;
+}
+
+/* Video preview column — YouTube thumbnail as background, injected via inline
+   background-image when an editor is picked. Fallback dark background so the
+   red play button stays visible if the thumbnail hasn't loaded yet. */
+.ecmd-editor-selector__video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: #0a0a0a;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-image 0.3s;
+}
+/* Whole thumbnail is clickable once a walkthrough is loaded — the play
+   button is now just a visual affordance. Cursor turns to default once the
+   iframe is playing (clicks inside iframe are handled by YouTube). */
+.ecmd-editor-selector__video[data-editor] { cursor: pointer; }
+.ecmd-editor-selector__video.is-playing { cursor: default; }
+
+/* Dark gradient overlay — top slightly darkened, bottom more so, for label
+   readability + play-button contrast against any thumbnail color. */
+.ecmd-editor-selector__video::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.60) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Editor icon watermark in top-right */
+.ecmd-editor-selector__video-watermark {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  opacity: 0.35;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* YouTube-style red play button — pill-shaped, red by default */
+.ecmd-editor-selector__video-play {
+  position: relative;
+  z-index: 3;
+  width: 4.5rem;
+  height: 3.125rem;
+  border-radius: 0.75rem;
+  background: #ff0000;    /* YouTube red */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1.5rem rgba(255, 0, 0, 0.4), 0 0.25rem 0.75rem rgba(0, 0, 0, 0.35);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.ecmd-editor-selector__video-play:hover,
+.ecmd-editor-selector__video-play:focus {
+  background: #cc0000;    /* darker YouTube red on hover */
+  transform: scale(1.08);
+  text-decoration: none;
+}
+/* White triangle inside the play button */
+.ecmd-editor-selector__video-play::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0.6875rem 0 0.6875rem 1.125rem;
+  border-color: transparent transparent transparent #fff;
+  margin-left: 0.25rem;
+}
+
+/* Ripple waves around the play button — white for contrast on red button */
+.ecmd-editor-selector__video-waves {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 4.5rem;
+  height: 3.125rem;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+.ecmd-editor-selector__video-waves::before,
+.ecmd-editor-selector__video-waves::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  border: 0.125rem solid rgba(255, 255, 255, 0.7);
+  animation: youtubeRipple 2.4s infinite ease-out;
+}
+.ecmd-editor-selector__video-waves::after {
+  animation-delay: 1.2s;
+}
+@keyframes youtubeRipple {
+  0%   { transform: scale(1);   opacity: 0.9; }
+  70%  { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* When a video is actually playing, hide the play button / waves / label /
+   watermark and let the iframe fill the box. */
+.ecmd-editor-selector__video-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  background: #000;
+  display: none;
+}
+.ecmd-editor-selector__video-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.ecmd-editor-selector__video.is-playing .ecmd-editor-selector__video-frame { display: block; }
+.ecmd-editor-selector__video.is-playing .ecmd-editor-selector__video-play,
+.ecmd-editor-selector__video.is-playing .ecmd-editor-selector__video-waves,
+.ecmd-editor-selector__video.is-playing .ecmd-editor-selector__video-label,
+.ecmd-editor-selector__video.is-playing .ecmd-editor-selector__video-watermark { display: none; }
+
+.ecmd-editor-selector__video-label {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  backdrop-filter: blur(0.25rem);
+}
+.ecmd-editor-selector__video-label .dashicons {
+  width: 0.875rem; height: 0.875rem; font-size: 0.875rem;
+}
+
+/* Prefers-reduced-motion — kill the ripple */
+@media (prefers-reduced-motion: reduce) {
+  .ecmd-editor-selector__video-waves::before,
+  .ecmd-editor-selector__video-waves::after { animation: none; opacity: 0; }
+}
+
+/* ----- Sibling promotion box (compact horizontal: icon + title + desc) -----
+   No video inside (main video above swaps to that editor). No buttons
+   inside — action buttons live in the card's nav row via variant swap. */
+
+.ecmd-editor-promo {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+}
+.ecmd-editor-promo[hidden] { display: none !important; }
+
+.ecmd-editor-promo--suggest {
+  background: var(--ecmd-accent-soft);
+  border: 0.0625rem solid var(--ecmd-accent-border);
+}
+.ecmd-editor-promo--ready {
+  background: var(--ecmd-success-soft);
+  border: 0.0625rem solid var(--ecmd-success-border);
+}
+
+.ecmd-editor-promo__icon {
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ecmd-editor-promo__icon img {
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+}
+
+.ecmd-editor-promo__body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.ecmd-editor-promo__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3125rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.1875rem;
+}
+.ecmd-editor-promo--suggest .ecmd-editor-promo__kicker { color: var(--ecmd-accent-hover); }
+.ecmd-editor-promo--ready .ecmd-editor-promo__kicker { color: var(--ecmd-success); }
+.ecmd-editor-promo__kicker .dashicons {
+  width: 0.8125rem; height: 0.8125rem; font-size: 0.8125rem;
+}
+
+.ecmd-editor-promo__title {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ecmd-text);
+  line-height: 1.3;
+}
+.ecmd-editor-promo__desc {
+  margin: 0.1875rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ecmd-text-muted);
+}
+
+/* ----- Nav variants (swap Continue for promo-specific actions) ----- */
+/* Default: Continue button shown; promo variants hidden.
+   When step 1 shows Elementor/Divi promo, JS toggles data-nav-mode on
+   the nav-right container to reveal the right buttons. */
+
+.ecmd-wizard-card__nav-right [data-nav-variant] { display: none; }
+.ecmd-wizard-card__nav-right[data-nav-mode="default"] [data-nav-variant="default"] { display: inline-flex; }
+.ecmd-wizard-card__nav-right[data-nav-mode="promo-suggest"] [data-nav-variant="promo-install"],
+.ecmd-wizard-card__nav-right[data-nav-mode="promo-suggest"] [data-nav-variant="promo-demos"],
+.ecmd-wizard-card__nav-right[data-nav-mode="promo-suggest"] [data-nav-variant="promo-dismiss"] { display: inline-flex; }
+.ecmd-wizard-card__nav-right[data-nav-mode="promo-ready"] [data-nav-variant="promo-open"],
+.ecmd-wizard-card__nav-right[data-nav-mode="promo-ready"] [data-nav-variant="promo-dismiss"] { display: inline-flex; }
+
+/* =========================================================================
+   STEP-2 — Layout & Style settings panel (row-based)
+   Each row is a 35/65 split: icon + small title + one-line description on
+   the left, the actual options on the right. No preview column — every
+   option carries its own "view demo" link that opens a live example in a
+   new tab.
+   ========================================================================= */
+
+.ecmd-settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* One row = one setting (Layout / Style / Filter Bar / Date Format) */
+.ecmd-settings-row {
+  display: grid;
+  grid-template-columns: 35fr 65fr;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 1.125rem 1.25rem;
+  background: #fff;
+  border: 0.0625rem solid var(--ecmd-border-soft);
+  border-radius: 0.75rem;
+}
+.ecmd-settings-row[hidden] { display: none !important; }
+
+.ecmd-settings-row__info {
+  display: flex;
+  gap: 0.6875rem;
+  align-items: flex-start;
+}
+.ecmd-settings-row__icon {
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  border-radius: 0.5rem;
+  background: var(--ecmd-primary-soft);
+  color: var(--ecmd-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ecmd-settings-row__icon .dashicons {
+  width: 1.125rem; height: 1.125rem; font-size: 1.125rem;
+}
+.ecmd-settings-row__meta { min-width: 0; }
+.ecmd-settings-row__title {
+  margin: 0 0 0.1875rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ecmd-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  line-height: 1.25;
+}
+.ecmd-settings-row__desc {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--ecmd-text-muted);
+}
+.ecmd-settings-row__body { min-width: 0; }
+
+/* ----- Compact layout cards ----- */
+.ecmd-layout-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.ecmd-layout-grid[hidden] { display: none !important; }
+
+.ecmd-layout-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 0.875rem;  /* symmetric — no per-card demo icon to reserve space for */
+  background: #fff;
+  border: 0.125rem solid var(--ecmd-border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.ecmd-layout-card:hover {
+  border-color: var(--ecmd-primary-border);
+  text-decoration: none;
+  color: inherit;
+}
+.ecmd-layout-card:focus-visible {
+  outline: 0.125rem solid var(--ecmd-focus);
+  outline-offset: 0.125rem;
+}
+.ecmd-layout-card.is-selected {
+  border-color: var(--ecmd-primary);
+  background: var(--ecmd-primary-soft);
+  box-shadow: 0 0 0 0.125rem rgba(6, 147, 227, 0.15);
+}
+.ecmd-layout-card__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: 0 0 auto;
+  border-radius: 0.375rem;
+  background: var(--ecmd-bg);
+  color: var(--ecmd-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s;
+}
+.ecmd-layout-card.is-selected .ecmd-layout-card__icon {
+  background: rgba(255, 255, 255, 0.7);
+}
+.ecmd-layout-card__icon .dashicons {
+  width: 1rem; height: 1rem; font-size: 1rem;
+}
+.ecmd-layout-card__name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ecmd-text);
+  line-height: 1.2;
+  text-align: left;
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Pro pill — top-LEFT, sitting HALF ABOVE the card border (badge tab style).
+   Horizontally aligned with the layout icon inside the card. */
+.ecmd-layout-card__pro {
+  position: absolute;
+  top: -0.5rem;
+  left: 0.6875rem; /* aligns with the icon left edge (padding-left) */
+  padding: 0.125rem 0.375rem;
+  background: var(--ecmd-accent);
+  color: #fff;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 0.25rem; /* ~4px rounded tab, not a pill */
+  text-transform: uppercase;
+  line-height: 1;
+  box-shadow: 0 0.0625rem 0.125rem rgba(227, 104, 11, 0.35);
+  z-index: 2;
+}
+
+/* Check indicator — sits on the RIGHT edge of the card (last flex child),
+   vertically centered with the icon + name. Radio-button style: outline
+   circle when unselected, filled brand-blue circle with white check when
+   the card is selected. Card never "jumps" because the reserved 1.125rem
+   square is always drawn. */
+.ecmd-layout-card__check,
+.ecmd-style-card__check {
+  flex: 0 0 auto;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  border: 0.125rem solid var(--ecmd-border);
+  background: transparent;
+  color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+.ecmd-layout-card:hover .ecmd-layout-card__check,
+.ecmd-style-card:hover .ecmd-style-card__check {
+  border-color: var(--ecmd-primary-border);
+}
+.ecmd-layout-card.is-selected .ecmd-layout-card__check,
+.ecmd-style-card.is-selected .ecmd-style-card__check {
+  background: var(--ecmd-primary);
+  border-color: var(--ecmd-primary);
+  color: #fff;
+}
+.ecmd-layout-card__check .dashicons,
+.ecmd-style-card__check .dashicons {
+  width: 0.75rem; height: 0.75rem; font-size: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.ecmd-layout-card.is-selected .ecmd-layout-card__check .dashicons,
+.ecmd-style-card.is-selected .ecmd-style-card__check .dashicons {
+  opacity: 1;
+}
+
+/* ----- Style cards (name only, tickmark on select — no preview, no demo) ----- */
+.ecmd-style-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.ecmd-style-card {
+  position: relative;
+  padding: 0.6875rem 0.875rem;
+  min-height: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.625rem;  /* space between the name and the tick indicator */
+  background: #fff;
+  border: 0.125rem solid var(--ecmd-border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.ecmd-style-card:hover {
+  border-color: var(--ecmd-primary-border);
+  text-decoration: none;
+  color: inherit;
+}
+.ecmd-style-card:focus-visible {
+  outline: 0.125rem solid var(--ecmd-focus);
+  outline-offset: 0.125rem;
+}
+.ecmd-style-card.is-selected {
+  border-color: var(--ecmd-primary);
+  background: var(--ecmd-primary-soft);
+  box-shadow: 0 0 0 0.125rem rgba(6, 147, 227, 0.15);
+}
+.ecmd-style-card__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ecmd-text);
+  line-height: 1.25;
+  text-align: left;
+}
+/* Small "see it live" text link — used next to toggle and under date select */
+.ecmd-demo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3125rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ecmd-primary);
+  text-decoration: none;
+  border-radius: 0.25rem;
+  transition: background-color 0.15s, color 0.15s;
+}
+.ecmd-demo-link:hover,
+.ecmd-demo-link:focus-visible {
+  background: var(--ecmd-primary-soft);
+  color: var(--ecmd-primary-hover);
+  text-decoration: none;
+  outline: none;
+}
+.ecmd-demo-link .dashicons {
+  width: 0.8125rem; height: 0.8125rem; font-size: 0.8125rem;
+}
+.ecmd-demo-link[hidden] { display: none !important; }
+
+/* ----- Pro notice bar ----- */
+.ecmd-pro-notice {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, var(--ecmd-accent-soft) 0%, #fff5e8 100%);
+  border: 0.0625rem solid var(--ecmd-accent-border);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+.ecmd-pro-notice[hidden] { display: none !important; }
+.ecmd-pro-notice__icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--ecmd-accent);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0.25rem 0.75rem rgba(227, 104, 11, 0.35);
+}
+.ecmd-pro-notice__icon .dashicons {
+  width: 1.125rem; height: 1.125rem; font-size: 1.125rem;
+}
+.ecmd-pro-notice__body { flex: 1 1 auto; min-width: 0; }
+.ecmd-pro-notice__title {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ecmd-text);
+}
+.ecmd-pro-notice__desc {
+  margin: 0.125rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ecmd-text-muted);
+}
+
+/* Step 2 nav variant swap (Continue ↔ Upgrade to Pro) */
+[data-step2-nav-right] [data-step2-nav-variant] { display: none; }
+[data-step2-nav-right][data-nav-mode="default"] [data-step2-nav-variant="default"] { display: inline-flex; }
+[data-step2-nav-right][data-nav-mode="upgrade"] [data-step2-nav-variant="upgrade"] { display: inline-flex; }
+
+/* =========================================================================
+   Events Query settings ("Which events to load?" row)
+   Reuses .ecmd-settings-row / .ecmd-style-row from the Layout row.
+   Adds the 3-column style-row variant + the row-level demo link offset.
+   ========================================================================= */
+
+/* 3-column variant for the Events Status row (Upcoming / Past / Both) */
+.ecmd-style-row--3col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Section-level demo link sitting under the row's small description text,
+   inside the left-hand meta column (e.g. Load Events by Date Range). Small
+   top offset keeps it clearly separated from the desc without wasting
+   vertical space. Negative left offset makes the icon flush with the desc. */
+.ecmd-settings-row__demo {
+  margin-top: 0.4375rem;
+  margin-left: -0.5rem;
+}
+
+/* =========================================================================
+   DONE STEP — recap panel, telemetry consent, success header,
+   cross-sell footer.
+   ========================================================================= */
+
+/* Step 5 recap — single centered card (no settings summary alongside).
+   Max-width keeps a long shortcode readable without stretching to full page. */
+.ecmd-review-recap {
+  max-width: 40rem;
+  margin: 1.25rem auto 0;
+}
+
+.ecmd-review-panel {
+  padding: 1.125rem 1.25rem;
+  background: #fff;
+  border: 0.0625rem solid var(--ecmd-border-soft);
+  border-radius: 0.75rem;
+}
+/* Builder card (block / bricks "where it goes") — no header row: the
+   success-header above the recap already communicates "created". Panel is
+   tightened vertically and the logo is bumped up so the card carries
+   visual weight without an icon-title chrome above it. */
+.ecmd-review-panel--builder {
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, #fff 0%, var(--ecmd-primary-soft) 140%);
+  border-color: var(--ecmd-primary-border);
+}
+.ecmd-review-builder {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.ecmd-review-builder__logo {
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  background: #fff;
+  padding: 0.375rem;
+  box-shadow: 0 0.125rem 0.375rem rgba(6, 147, 227, 0.12);
+}
+.ecmd-review-builder__title {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ecmd-text);
+  line-height: 1.3;
+  margin-bottom: 0.1875rem;
+}
+.ecmd-review-builder__desc {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ecmd-text-muted);
+}
+
+/* Telemetry consent bar — white card matching the other settings rows;
+   only the checkbox area (wrapped in a small <label>) toggles the value,
+   so clicks on the description text don't accidentally uncheck. */
+.ecmd-telemetry {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.125rem;
+  margin-top: 1.25rem;
+  background: #fff;
+  border: 0.0625rem solid var(--ecmd-border-soft);
+  border-radius: 0.75rem;
+  transition: border-color 0.15s;
+}
+.ecmd-telemetry__checkbox-wrap {
+  display: inline-flex;
+  align-items: flex-start;
+  cursor: pointer;
+  flex: 0 0 auto;
+  margin-top: 0.125rem;
+}
+.ecmd-telemetry__checkbox {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.ecmd-telemetry__mark {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex: 0 0 auto;
+  border-radius: 0.25rem;
+  background: #fff;
+  border: 0.125rem solid var(--ecmd-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.ecmd-telemetry__checkbox-wrap:hover .ecmd-telemetry__mark {
+  border-color: var(--ecmd-primary-border);
+}
+.ecmd-telemetry__mark .dashicons {
+  width: 0.875rem; height: 0.875rem; font-size: 0.875rem;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+.ecmd-telemetry__checkbox:checked + .ecmd-telemetry__mark {
+  background: var(--ecmd-primary);
+  border-color: var(--ecmd-primary);
+}
+.ecmd-telemetry__checkbox:checked + .ecmd-telemetry__mark .dashicons { opacity: 1; }
+.ecmd-telemetry__checkbox:focus-visible + .ecmd-telemetry__mark {
+  outline: 0.125rem solid var(--ecmd-focus);
+  outline-offset: 0.125rem;
+}
+.ecmd-telemetry__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1875rem;
+  min-width: 0;
+}
+.ecmd-telemetry__title {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ecmd-text);
+}
+.ecmd-telemetry__desc {
+  font-size: 0.75rem;
+  color: var(--ecmd-text-muted);
+  line-height: 1.5;
+}
+.ecmd-telemetry__policy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1875rem;
+  margin-left: 0.25rem;
+  color: var(--ecmd-primary);
+  text-decoration: underline;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.ecmd-telemetry__policy:hover,
+.ecmd-telemetry__policy:focus-visible {
+  color: var(--ecmd-primary-hover);
+  outline: none;
+}
+.ecmd-telemetry__policy .dashicons {
+  width: 0.75rem; height: 0.75rem; font-size: 0.75rem;
+}
+
+/* ---------- STEP 5 — Success header + success nav + cross-sell -------- */
+.ecmd-wizard-success__icon--lg {
+  width: 4.5rem;
+  height: 4.5rem;
+  background: linear-gradient(135deg, var(--ecmd-success) 0%, #2a9c60 100%);
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0.5rem 1.5rem rgba(53, 181, 114, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  animation: ecmdSuccessPop 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ecmd-wizard-success__icon--lg .dashicons {
+  width: 2.5rem; height: 2.5rem; font-size: 2.5rem;
+}
+@keyframes ecmdSuccessPop {
+  0%   { transform: scale(0.4); opacity: 0; }
+  60%  { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ecmd-wizard-success__icon--lg { animation: none; }
+}
+
+/* Success actions row — Create / Preview / Edit / Change / Recreate / Finish.
+   Reuses the shared .ecmd-wizard-success__actions primitive (already flex +
+   wrap + centered); this override adds the divider above and the space
+   needed after the recap card. */
+.ecmd-wizard-success__actions {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 0.0625rem solid var(--ecmd-border-soft);
+}
+
+/* Small builder-aware hint to the left of the Step 3 primary CTA when
+   Block or Bricks is picked. Reads like "Insert Events Block in Block Editor". */
+.ecmd-wizard-card__nav-hint {
+  font-size: 0.75rem;
+  color: var(--ecmd-text-muted);
+  font-style: italic;
+  margin-right: 0.5rem;
+  align-self: center;
+  white-space: nowrap;
+}
+.ecmd-wizard-card__nav-hint[hidden] { display: none !important; }
+@media (max-width: 32rem) {
+  .ecmd-wizard-card__nav-hint { white-space: normal; }
+}
+
+/* Finish button — success green (#35B572 = --ecmd-success). Distinct from
+   the primary blue so users can tell "exit the wizard" apart from
+   "preview my new page". */
+.ecmd-btn-success {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5625rem 1rem;
+  background: var(--ecmd-success);
+  color: #fff;
+  border: 0.125rem solid var(--ecmd-success);
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+.ecmd-btn-success:hover,
+.ecmd-btn-success:focus-visible {
+  background: #2a9c60;
+  border-color: #2a9c60;
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-0.0625rem);
+  box-shadow: 0 0.25rem 0.75rem rgba(53, 181, 114, 0.3);
+  outline: none;
+}
+
+/* Progress strip on the Done step, once the page has been created: turn the
+   current-step number chip green with a checkmark so users see the whole
+   wizard visually complete. */
+body[data-page-created="true"] .ecmd-wizard-header-step.is-current .ecmd-wizard-header-step__num {
+  background: var(--ecmd-success);
+  color: #fff;
+  border-color: var(--ecmd-success);
+}
+
+/* Cross-sell footer — Single Page Builder promo */
+.ecmd-cross-sell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  margin-top: 1.5rem;
+  background: linear-gradient(135deg, #fff5e8 0%, var(--ecmd-accent-soft) 100%);
+  border: 0.0625rem solid var(--ecmd-accent-border);
+  border-radius: 0.75rem;
+}
+/* The plugin brand SVGs already ship with a rounded-frame border and
+   internal padding — the outer container is just a flex slot, no chrome. */
+.ecmd-cross-sell__icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ecmd-cross-sell__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+/* Chip modifier — applied when the icon slot holds a Dashicons glyph
+   (e.g. the bundle promo) instead of a pre-framed plugin SVG. Adds the
+   white rounded frame back so the glyph doesn't sit bare on the orange
+   promo background. Mirrors the same rule used on Dashboard bundle icons. */
+.ecmd-cross-sell__icon--chip {
+  background: #fff;
+  border: 0.0625rem solid var(--ecmd-accent-border);
+  border-radius: 0.5rem;
+  color: var(--ecmd-accent);
+}
+.ecmd-cross-sell__icon--chip .dashicons {
+  font-size: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1;
+}
+
+/* Bundle-promo variant — slightly richer than a regular sibling cross-sell
+   because the bundle CTA is doing the work of several per-addon cards. */
+.ecmd-cross-sell--bundle {
+  border-color: var(--ecmd-accent);
+  box-shadow: 0 0.125rem 0.5rem rgba(227, 104, 11, 0.12);
+}
+.ecmd-cross-sell--bundle .ecmd-cross-sell__title {
+  font-size: 0.9375rem;
+}
+.ecmd-cross-sell__body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+.ecmd-cross-sell__title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ecmd-text);
+}
+.ecmd-cross-sell__desc {
+  font-size: 0.75rem;
+  color: var(--ecmd-text-muted);
+  line-height: 1.5;
+}
+.ecmd-cross-sell__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Responsive stacking for cross-sell + builder recap */
+@media (max-width: 48rem) {
+  .ecmd-cross-sell { flex-direction: column; align-items: stretch; text-align: center; }
+  .ecmd-cross-sell__actions { justify-content: center; }
+  .ecmd-review-builder { flex-direction: column; text-align: center; }
+}
+
+/* Accent (Upgrade to Pro) pulse — orange */
+@keyframes wizardCtaPulseAccent {
+  0%, 100% {
+    box-shadow:
+      0 0.125rem 0.375rem rgba(227, 104, 11, 0.4),
+      0 0 0 0 rgba(227, 104, 11, 0.55);
+  }
+  60% {
+    box-shadow:
+      0 0.125rem 0.375rem rgba(227, 104, 11, 0.4),
+      0 0 0 0.625rem rgba(227, 104, 11, 0);
+  }
+}
+.ecmd-wizard-card__nav .ecmd-btn-accent {
+  animation: wizardCtaPulseAccent 2.2s ease-out infinite;
+}
+.ecmd-wizard-card__nav .ecmd-btn-accent:hover,
+.ecmd-wizard-card__nav .ecmd-btn-accent:focus {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ecmd-wizard-card__nav .ecmd-btn-accent { animation: none; }
+}
+
+/* Responsive: collapse to single-column at narrow widths */
+@media (max-width: 60rem) {
+  .ecmd-settings-row { grid-template-columns: 1fr; }
+  .ecmd-layout-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 40rem) {
+  .ecmd-style-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 25rem) {
+  .ecmd-layout-grid { grid-template-columns: 1fr; }
+  .ecmd-style-row { grid-template-columns: 1fr; }
+}
+
+/* Reduced motion — option select cards (all transitions are already <=200ms;
+   this collapses them entirely for users who prefer no motion). */
+@media (prefers-reduced-motion: reduce) {
+  .ecmd-editor-option, .ecmd-editor-option *,
+  .ecmd-editor-option *::before, .ecmd-editor-option *::after,
+  .ecmd-layout-card, .ecmd-layout-card *,
+  .ecmd-layout-card *::before, .ecmd-layout-card *::after,
+  .ecmd-style-card, .ecmd-style-card *,
+  .ecmd-style-card *::before, .ecmd-style-card *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ----- Responsive ----- */
+
+@media (max-width: 60rem) {
+  .ecmd-wizard-header {
+    grid-template-columns: minmax(0, auto) minmax(0, auto);
+    grid-template-rows: auto auto;
+    row-gap: 1rem;
+    padding: 0.875rem 1rem;
+    min-height: auto;
+  }
+  .ecmd-wizard-header__brand { grid-column: 1; grid-row: 1; }
+  .ecmd-wizard-header__exit  { grid-column: 2; grid-row: 1; }
+  .ecmd-wizard-header__steps { grid-column: 1 / -1; grid-row: 2; justify-self: center; }
+}
+
+@media (max-width: 48rem) {
+  .ecmd-editor-selector {
+    grid-template-columns: 1fr;
+  }
+  /* stacked: reset the desktop swap so DOM order applies (options above video) */
+  .ecmd-editor-selector__video,
+  .ecmd-editor-selector__options { grid-column: auto; grid-row: auto; }
+  .ecmd-editor-selector__options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ecmd-wizard-header-step__label { display: none; }
+  .ecmd-wizard-header__connector { width: 1.5rem; }
+  .ecmd-wizard-header-step { min-width: 2rem; }
+  .ecmd-wizard-card { padding: 1.5rem; }
+  .ecmd-wizard-main { padding: 1.5rem 1rem 2rem; }
+}
+
+@media (max-width: 32rem) {
+  .ecmd-wizard-card__nav {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .ecmd-wizard-card__nav-right { width: 100%; justify-content: flex-end; }
+}
+

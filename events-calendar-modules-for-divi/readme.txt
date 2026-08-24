@@ -3,9 +3,9 @@ Contributors: satindersingh, narinder-singh, coolplugins, eventscalendaraddons
 Donate link: https://donate.stripe.com/5kQdR92iBevO75WbPm6c00i
 Tags: the events calendar, event calendar, events, divi theme, divi module
 Requires at least: 5.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.2
-Stable tag: 1.1.9
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -144,6 +144,12 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 5. Events List Module Settings
 
 == Changelog ==
+
+= 1.2.0 | 24 Aug 2026 =
+* New: Introduced a "Get Started" onboarding page for a smoother setup experience.
+* New: Added a guided sample events demo creation flow to help users get started quickly.
+* Removed: Removed the legacy dashboard and replaced it with the new onboarding experience.
+* Improved: Simplified the initial setup process with a quick-start demo.
 
 = 1.1.9 | 09 Jul 2026 =
 * Improved: Code quality, performance, and overall optimization.

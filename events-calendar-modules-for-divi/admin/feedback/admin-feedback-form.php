@@ -263,12 +263,25 @@ class ECMD_feedback {
 			];
 		}
 	
+		$extra_details = [
+			'wp_theme'       => $theme_data,
+			'active_plugins' => $plugin_data,
+		];
+
+		if ( ! class_exists( 'CPFM_Onboarding_Optin' ) ) {
+			$optin = ECMD_DIR . 'admin/cpfm-feedback/class-cpfm-onboarding-optin.php';
+			if ( file_exists( $optin ) ) {
+				require_once $optin;
+			}
+		}
+
+		if ( class_exists( 'CPFM_Onboarding_Optin' ) ) {
+			$extra_details['user_preference_onboarding'] = CPFM_Onboarding_Optin::get_preferences_for_extra_details();
+		}
+
 		return [
 			'server_info'   => $server_info,
-			'extra_details' => [
-				'wp_theme'       => $theme_data,
-				'active_plugins' => $plugin_data,
-			],
+			'extra_details' => $extra_details,
 		];
 	}
 

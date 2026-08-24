@@ -1,0 +1,75 @@
+/**
+ * Fullscreen admin chrome removal for the ECMD onboarding wizard.
+ * Scoped to body.ecmd-onboarding-page only (SureForms-style pattern).
+ */
+
+html:has(> body.ecmd-onboarding-page).wp-toolbar {
+  padding-top: 0 !important;
+  box-sizing: border-box;
+}
+
+body.ecmd-onboarding-page #wpcontent,
+body.ecmd-onboarding-page #wpbody {
+  padding: 0;
+  margin: 0;
+}
+
+body.ecmd-onboarding-page #wpadminbar,
+body.ecmd-onboarding-page #adminmenuback,
+body.ecmd-onboarding-page #adminmenumain,
+body.ecmd-onboarding-page #adminmenuwrap,
+body.ecmd-onboarding-page #wpfooter,
+body.ecmd-onboarding-page #cpfNoticePanel,
+body.ecmd-onboarding-page .notice,
+body.ecmd-onboarding-page .updated,
+body.ecmd-onboarding-page .update-nag,
+body.ecmd-onboarding-page .error {
+  display: none !important;
+}
+
+body.ecmd-onboarding-page #wpbody-content {
+  padding-bottom: 0;
+}
+
+body.ecmd-onboarding-page .wrap {
+  margin: 0;
+}
+
+body.ecmd-onboarding-page .wrap > h1 {
+  display: none;
+}
+
+body.ecmd-onboarding-page .ecmd-onboarding-admin {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Defeat wp-admin anchor focus bleed into wizard buttons/tabs. */
+.ecmd-wizard-shell a:focus:not(:focus-visible),
+.ecmd-wizard-shell button:focus:not(:focus-visible),
+.ecmd-onboarding-admin a:focus:not(:focus-visible),
+.ecmd-onboarding-admin button:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+.ecmd-btn-primary:focus,
+.ecmd-btn-secondary:focus,
+.ecmd-btn-accent:focus,
+.ecmd-btn-ghost:focus {
+  border-radius: 6px;
+}
+
+.ecmd-onboarding-admin .ecmd-btn-primary,
+.ecmd-onboarding-admin .ecmd-btn-accent {
+  color: #fff;
+}
+
+.ecmd-btn-secondary:focus,
+.ecmd-btn-ghost:focus {
+  color: var(--ecmd-primary, #2271b1);
+}
+
+body.ecmd-finishing .ecmd-wizard-success__actions,
+body.ecmd-finishing .ecmd-cross-sell {
+  visibility: hidden !important;
+}
